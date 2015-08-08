@@ -35,6 +35,12 @@
         self.userProfileImageView.backgroundColor = [UIColor lighterGrayColor];
         [self.contentView addSubview:self.userProfileImageView];
         
+        self.usernameLabel = [[UILabel alloc] init];
+        self.usernameLabel.font = [UIFont boldSystemFontOfSize:14.f];
+        self.usernameLabel.numberOfLines = 1;
+        self.usernameLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+        [self.contentView addSubview:self.usernameLabel];
+        
         self.bottomDivider = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, DIVIDER_HEIGHT())];
         self.bottomDivider.backgroundColor = [UIColor borderColor];
         [self.contentView addSubview:self.bottomDivider];
@@ -55,7 +61,13 @@
     [self.userProfileImageView setX:SIDE_MARGIN];
     [self.userProfileImageView setY:VERTICAL_MARGIN];
     
-    [self.bottomDivider setX:CGRectGetMaxX(self.userProfileImageView.frame)];
+    [self.usernameLabel setHeight:CGRectGetHeight(self.userProfileImageView.frame)];
+    [self.usernameLabel setX:CGRectGetMaxX(self.userProfileImageView.frame) + TEXT_MARGIN];
+    [self.usernameLabel setY:CGRectGetMinY(self.userProfileImageView.frame)];
+    [self.usernameLabel fillWidth];
+    self.usernameLabel.text = @"Test Username";
+    
+    [self.bottomDivider setX:CGRectGetMinX(self.usernameLabel.frame)];
     [self.bottomDivider fillWidth];
     [self.bottomDivider alignBottomWithMargin:0];
 }
@@ -69,7 +81,7 @@
 
 + (CGFloat)height
 {
-    return 70.f;
+    return VERTICAL_MARGIN + PROFILE_SIZE + VERTICAL_MARGIN;
 }
 
 @end

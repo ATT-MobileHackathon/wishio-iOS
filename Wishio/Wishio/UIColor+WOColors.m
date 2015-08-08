@@ -27,7 +27,7 @@
 }
 
 + (UIColor *)lighterGrayColor {
-    return [UIColor colorWithWhite:0.85 alpha:1];
+    return [UIColor colorWithWhite:0.90 alpha:1];
 }
 
 #pragma mark - Private Methods
