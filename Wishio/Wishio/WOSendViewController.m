@@ -13,6 +13,7 @@
 #import "UIColor+WOColors.h"
 #import "UIView+WOAdditions.h"
 #import "WOConstants.h"
+#import "WOFundTableViewCell.h"
 
 @interface WOSendViewController ()
 @property (strong, nonatomic) UIButton *dismissButton;
@@ -62,6 +63,7 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
     }];
     [UIView animateWithDuration:0.50f delay:0 usingSpringWithDamping:DAMPING_FACTOR initialSpringVelocity:1 options:0 animations:^{
         [self.fundCell centerVertically];
+        self.fundCell.sendMoneyButton.alpha = 0;
         [self _placeCloseButtonAboveView];
     } completion:nil];
 }
@@ -127,6 +129,7 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
     }];
     [UIView animateWithDuration:0.50f delay:0 usingSpringWithDamping:DAMPING_FACTOR initialSpringVelocity:1 options:0 animations:^{
         [self.fundCell setY:self.initialY];
+        self.fundCell.sendMoneyButton.alpha = 1;
         [self _placeCloseButtonAboveView];
         self.dismissButton.alpha = 0;
     } completion:^(BOOL finished) {

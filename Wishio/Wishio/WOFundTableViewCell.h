@@ -11,6 +11,7 @@
 #import "WOFund.h"
 
 @interface WOFundTableViewCell : UITableViewCell
+@property UIButton *sendMoneyButton;
 - (void)setupWithFund:(WOFund *)fund;
 + (CGFloat)heightGivenFund:(WOFund *)fund widthConstraint:(CGFloat)width;
 @end

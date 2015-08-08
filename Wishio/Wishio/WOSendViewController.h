@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class WOFundTableViewCell;
 
 @interface WOSendViewController : UIViewController
 @property (assign, nonatomic) CGFloat initialY;
-@property (strong, nonatomic) UIView *fundCell;
+@property (strong, nonatomic) WOFundTableViewCell *fundCell;
 - (void)getScreenshot;
 @end

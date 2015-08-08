@@ -32,8 +32,6 @@
 @property UILabel *currentRaisedLabel;
 @property UILabel *priceLabel;
 
-@property UIButton *sendMoneyButton;
-
 @property UIView *bottomDivider;
 
 @property CGFloat progress;
@@ -113,10 +111,10 @@ static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
         [self.sendMoneyButton setTitle:@"Send" forState:UIControlStateNormal];
         [self.sendMoneyButton setTitleColor:[UIColor lightGreenColor] forState:UIControlStateNormal];
         self.sendMoneyButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.f];
-        [self.contentView addSubview:self.sendMoneyButton];
         self.sendMoneyButton.layer.cornerRadius = 3.f;
         self.sendMoneyButton.layer.borderWidth = 1.f;
         self.sendMoneyButton.layer.borderColor = [UIColor lightGreenColor].CGColor;
+        [self insertSubview:self.sendMoneyButton atIndex:0];
 
         self.bottomDivider = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, DIVIDER_HEIGHT())];
         self.bottomDivider.backgroundColor = [UIColor borderColor];
