@@ -9,18 +9,19 @@
 #import "WOOperations.h"
 #import "AFNetworking.h"
 
-static const NSString * BASE_URL = @"";
-static NSString * FEED_ENDPOINT = @"/feed";
+static const NSString * BASE_URL = @"https://214b7bb7.ngrok.com";
+static NSString * FEED_ENDPOINT = @"/funds/retrieve";
 
 @implementation WOOperations
 
-- (void)requestFeedWithParameters:(NSDictionary *)parameters
++ (void)requestFeedWithParameters:(NSDictionary *)parameters
                           success:(void (^)(NSArray *))success
                           failure:(void (^)(NSString *message))failure
 {
     NSString *URL = [BASE_URL stringByAppendingString:FEED_ENDPOINT];
     [[AFHTTPRequestOperationManager manager] GET:URL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //parse
+        NSArray *funds = responseObject[@"funds"];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (failure) {
             failure(@"Could not retrieve feed");

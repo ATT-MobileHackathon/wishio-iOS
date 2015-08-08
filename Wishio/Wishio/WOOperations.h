@@ -10,7 +10,7 @@
 
 @interface WOOperations : NSObject
 
-- (void)requestFeedWithParameters:(NSDictionary *)parameters
++ (void)requestFeedWithParameters:(NSDictionary *)parameters
                           success:(void (^)(NSArray *))success
                           failure:(void (^)(NSString *message))failure;
 

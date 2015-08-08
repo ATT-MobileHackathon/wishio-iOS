@@ -12,6 +12,7 @@
 #import "WOConstants.h"
 #import "WOFund.h"
 #import "WOFundTableViewCell.h"
+#import "WOOperations.h"
 #import "WOSendViewController.h"
 
 @interface WOHomeViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -27,6 +28,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self _setupView];
+    [self _requestFeed];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -84,6 +86,12 @@
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:tableView];
     self.tableView = tableView;
+}
+
+- (void)_requestFeed {
+    [WOOperations requestFeedWithParameters:nil success:^(NSArray *array) {
+        
+    } failure:nil];
 }
 
 #pragma mark - Lazy Instantiation
