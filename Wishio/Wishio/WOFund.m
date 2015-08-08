@@ -18,4 +18,13 @@
              };
 }
 
+#pragma mark - Public Methods
+
+- (NSString *)currentFundingString {
+    NSMutableString *result = [[NSMutableString alloc] init];
+    [result setString:[NSString stringWithFormat:@"$%li", self.currentFunding]];
+    [result insertString:@"." atIndex:[result length] - 2];
+    return result;
+}
+
 @end

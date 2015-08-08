@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#import "WOFund.h"
+
 @interface WOFundTableViewCell : UITableViewCell
-- (void)setupWithFund:(id)fund;
-+ (CGFloat)heightGivenFund:(id)fund widthConstraint:(CGFloat)width;
+- (void)setupWithFund:(WOFund *)fund;
++ (CGFloat)heightGivenFund:(WOFund *)fund widthConstraint:(CGFloat)width;
 @end

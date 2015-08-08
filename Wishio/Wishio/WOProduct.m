@@ -20,4 +20,13 @@
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
+#pragma mark - Public Methods
+
+- (NSString *)priceString {
+    NSMutableString *result = [[NSMutableString alloc] init];
+    [result setString:[NSString stringWithFormat:@"$%li", self.price]];
+    [result insertString:@"." atIndex:[result length] - 2];
+    return result;
+}
+
 @end

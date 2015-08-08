@@ -10,6 +10,8 @@
 
 #import "AFNetworking.h"
 #import "WOFund.h"
+#import "WOProduct.h"
+#import "WOUser.h"
 
 static const NSString * BASE_URL = @"https://214b7bb7.ngrok.com";
 static NSString * FEED_ENDPOINT = @"/funds/retrieve";
@@ -45,7 +47,9 @@ static NSString * FEED_ENDPOINT = @"/funds/retrieve";
             
             [funds addObject:fund];
         }
-        
+        if (success) {
+            success(funds);
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (failure) {
             failure(@"Could not retrieve feed");

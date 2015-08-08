@@ -14,6 +14,9 @@
 #import "UIImageView+AFNetworking.h"
 #import "UIView+WOAdditions.h"
 #import "WOConstants.h"
+#import "WOFund.h"
+#import "WOProduct.h"
+#import "WOUser.h"
 
 @interface WOFundTableViewCell ()
 @property UIImageView *userProfileImageView;
@@ -32,6 +35,8 @@
 @property UIButton *sendMoneyButton;
 
 @property UIView *bottomDivider;
+
+@property CGFloat progress;
 @end
 
 static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
@@ -121,11 +126,13 @@ static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
 }
 
 - (void)dealloc {
-    
+    [self.userProfileImageView cancelImageRequestOperation];
+    [self.productImageView cancelImageRequestOperation];
 }
 
 - (void)prepareForReuse {
-    
+    [self.userProfileImageView cancelImageRequestOperation];
+    [self.productImageView cancelImageRequestOperation];
 }
 
 - (void)layoutSubviews {
@@ -137,16 +144,13 @@ static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
     [self.usernameLabel setY:CGRectGetMinY(self.userProfileImageView.frame)];
     [self.usernameLabel fillWidthWithMargin:TEXT_MARGIN];
     [self.usernameLabel setHeight:[self.usernameLabel sizeThatFits:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)].height];
-    self.usernameLabel.text = @"Test Username";
     
-    self.contributersLabel.text = @"3 contributors";
     [self.contributersLabel sizeToFit];
     [self.contributersLabel setHeight:CGRectGetHeight(self.usernameLabel.frame)];
     [self.contributersLabel setY:VERTICAL_MARGIN];
     [self.contributersLabel alignRightWithMargin:TEXT_MARGIN];
     [self.usernameLabel fillWidthWithMargin:TEXT_MARGIN + CGRectGetWidth(self.contributersLabel.frame)];
     
-    self.productName.text = @"Product name";
     [self.productName setX:CGRectGetMinX(self.usernameLabel.frame)];
     [self.productName setY:CGRectGetMaxY(self.usernameLabel.frame)];
     [self.productName fillWidthWithMargin:TEXT_MARGIN];
@@ -160,15 +164,13 @@ static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
     [self.progressBar setY:CGRectGetMinY(self.productImageView.frame)];
     [self.progressBar setHeight:CGRectGetHeight(self.productImageView.frame)];
     
-    [self.currentProgressView setHeight:CGRectGetHeight(self.progressBar.frame) * 0.75];
+    [self.currentProgressView setHeight:CGRectGetHeight(self.progressBar.frame) * self.progress];
     [self.currentProgressView alignBottomWithMargin:0];
     
-    self.currentRaisedLabel.text = @"$300";
     [self.currentRaisedLabel sizeToFit];
     [self.currentRaisedLabel setX:CGRectGetMaxX(self.progressBar.frame) + TEXT_MARGIN];
     [self.currentRaisedLabel setY:CGRectGetMidY(self.progressBar.frame) - CGRectGetHeight(self.currentRaisedLabel.frame)];
     
-    self.priceLabel.text = @"of $400";
     [self.priceLabel sizeToFit];
     [self.priceLabel setX:CGRectGetMinX(self.currentRaisedLabel.frame)];
     [self.priceLabel setY:CGRectGetMaxY(self.currentRaisedLabel.frame)];
@@ -185,12 +187,21 @@ static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
 
 #pragma mark - Public Methods
 
-- (void)setupWithFund:(id)fund
+- (void)setupWithFund:(WOFund *)fund
 {
+    [self.userProfileImageView setImageWithURL:fund.user.imageURL];
+    self.usernameLabel.text = fund.user.name;
+    self.contributersLabel.text = [NSString stringWithFormat:@"%li contributors", fund.funderCount];
+    self.productName.text = fund.product.name;
+    [self.productImageView setImageWithURL:fund.product.imageURL];
+    self.progress = fund.currentFunding / fund.product.price;
+    self.currentRaisedLabel.text = [fund currentFundingString];
+    self.priceLabel.text = [NSString stringWithFormat:@"of %@", [fund.product priceString]];
+    
     [self layoutSubviews];
 }
 
-+ (CGFloat)heightGivenFund:(id)fund widthConstraint:(CGFloat)width
++ (CGFloat)heightGivenFund:(WOFund *)fund widthConstraint:(CGFloat)width
 {
     static WOFundTableViewCell *cell;
     if (!cell) {

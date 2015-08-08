@@ -7,14 +7,15 @@
 //
 
 #import "Mantle.h"
-#import "WOProduct.h"
-#import "WOUser.h"
-
+@class WOProduct;
+@class WOUser;
 @interface WOFund : MTLModel <MTLJSONSerializing>
 
 @property (assign, nonatomic) NSInteger currentFunding;
 @property (assign, nonatomic) NSInteger funderCount;
 @property (strong, nonatomic) WOProduct *product;
 @property (strong, nonatomic) WOUser *user;
+
+- (NSString *)currentFundingString;
 
 @end
