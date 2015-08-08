@@ -33,6 +33,7 @@
 		2746C98F1B7651A60094762F /* WOFundTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOFundTableViewCell.m; sourceTree = "<group>"; };
 		2746C9911B7658BA0094762F /* UIView+WOAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WOAdditions.h"; sourceTree = "<group>"; };
 		2746C9921B7658BA0094762F /* UIView+WOAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WOAdditions.m"; sourceTree = "<group>"; };
+		2746C9951B765AE60094762F /* WOConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WOConstants.h; sourceTree = "<group>"; };
 		27807D8E1B76044E00E52F92 /* Wishio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wishio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27807D921B76044E00E52F92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27807D931B76044E00E52F92 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -106,6 +107,14 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		2746C9941B765ACD0094762F /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				2746C9951B765AE60094762F /* WOConstants.h */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
 		27807D851B76044D00E52F92 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +138,7 @@
 		27807D901B76044E00E52F92 /* Wishio */ = {
 			isa = PBXGroup;
 			children = (
+				2746C9941B765ACD0094762F /* Constants */,
 				2746C98D1B764FEC0094762F /* Categories */,
 				2746C98C1B764FE50094762F /* Controllers */,
 				2746C98B1B764FDF0094762F /* Views */,

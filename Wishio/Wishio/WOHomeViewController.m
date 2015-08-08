@@ -8,6 +8,8 @@
 
 #import "WOHomeViewController.h"
 
+#import "WOFundTableViewCell.h"
+
 @interface WOHomeViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) NSMutableArray *feedItems;
 @property (strong, nonatomic) UITableView *tableView;
@@ -35,11 +37,21 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [self.feedItems count];
+    return [self.feedItems count] + 14;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [WOFundTableViewCell height];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    NSString *identifider = @"Feed cell";
+    WOFundTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifider];
+    if (!cell) {
+        cell = [[WOFundTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifider];
+    }
+    return cell;
 }
 
 #pragma mark - Private Methods

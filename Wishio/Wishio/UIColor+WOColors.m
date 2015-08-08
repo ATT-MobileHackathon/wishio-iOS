@@ -26,6 +26,8 @@
     return [UIColor colorWithWhite:0.85 alpha:1];
 }
 
+#pragma mark - Private Methods
+
 + (UIColor *)colorWithIntRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha
 {
     return [UIColor colorWithRed:red/255.f green:green/255.f blue:blue/255.f alpha:alpha];
