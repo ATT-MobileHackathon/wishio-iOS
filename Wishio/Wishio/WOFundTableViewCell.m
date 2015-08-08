@@ -8,6 +8,8 @@
 
 #import "WOFundTableViewCell.h"
 
+#import "FontAwesomeKit.h"
+
 #import "UIColor+WOColors.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIView+WOAdditions.h"
@@ -17,12 +19,18 @@
 @property UIImageView *userProfileImageView;
 @property UILabel *usernameLabel;
 @property UILabel *contributersLabel;
+
 @property UILabel *productName;
 @property UIImageView *productImageView;
+
 @property UIView *progressBar;
 @property UIView *currentProgressView;
+
 @property UILabel *currentRaisedLabel;
 @property UILabel *priceLabel;
+
+@property UIButton *sendMoneyButton;
+
 @property UIView *bottomDivider;
 @end
 
@@ -90,6 +98,20 @@ static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
         self.priceLabel.numberOfLines = 1;
         [self.contentView addSubview:self.priceLabel];
         
+        self.sendMoneyButton = [[UIButton alloc] init];
+        [self.sendMoneyButton setSize:CGSizeMake(80.f, 30.f)];
+        FAKIcon *moneyIcon = [FAKIonIcons socialUsdIconWithSize:14.f];
+        [moneyIcon setAttributes:@{NSForegroundColorAttributeName:[UIColor lightGreenColor]}];
+        [self.sendMoneyButton setImage:[moneyIcon imageWithSize:CGSizeMake(14.f, 14.f)]
+                              forState:UIControlStateNormal];
+        [self.sendMoneyButton setTitle:@"Send" forState:UIControlStateNormal];
+        [self.sendMoneyButton setTitleColor:[UIColor lightGreenColor] forState:UIControlStateNormal];
+        self.sendMoneyButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.f];
+        [self.contentView addSubview:self.sendMoneyButton];
+        self.sendMoneyButton.layer.cornerRadius = 3.f;
+        self.sendMoneyButton.layer.borderWidth = 1.f;
+        self.sendMoneyButton.layer.borderColor = [UIColor lightGreenColor].CGColor;
+
         self.bottomDivider = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, DIVIDER_HEIGHT())];
         self.bottomDivider.backgroundColor = [UIColor borderColor];
         [self.contentView addSubview:self.bottomDivider];
@@ -149,6 +171,9 @@ static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
     [self.priceLabel sizeToFit];
     [self.priceLabel setX:CGRectGetMinX(self.currentRaisedLabel.frame)];
     [self.priceLabel setY:CGRectGetMaxY(self.currentRaisedLabel.frame)];
+    
+    [self.sendMoneyButton alignRightWithMargin:TEXT_MARGIN];
+    [self.sendMoneyButton alignBottomWithMargin:TEXT_MARGIN];
     
     [self.bottomDivider setX:CGRectGetMinX(self.usernameLabel.frame)];
     [self.bottomDivider setY:CGRectGetMaxY(self.productImageView.frame) + VERTICAL_MARGIN];
