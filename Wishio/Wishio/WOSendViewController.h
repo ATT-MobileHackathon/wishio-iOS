@@ -11,4 +11,5 @@
 @interface WOSendViewController : UIViewController
 @property (assign, nonatomic) CGFloat initialY;
 @property (strong, nonatomic) UIView *fundCell;
+- (void)getScreenshot;
 @end

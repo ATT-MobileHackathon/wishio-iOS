@@ -42,6 +42,7 @@ static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
     
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.backgroundColor = [UIColor whiteColor];
         
         self.userProfileImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, PROFILE_SIZE, PROFILE_SIZE)];
         self.userProfileImageView.clipsToBounds = YES;

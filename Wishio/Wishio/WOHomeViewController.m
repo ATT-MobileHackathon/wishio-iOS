@@ -59,12 +59,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     WOFund *fund = nil; //self.feedItems[indexPath.row];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    WOFundTableViewCell *cellCopy = [[WOFundTableViewCell alloc] initWithFrame:cell.frame];
+    WOFundTableViewCell *cellCopy = [[WOFundTableViewCell alloc] init];
+    CGFloat screenY = [tableView convertPoint:cell.frame.origin toView:nil].y;
+    [cellCopy setY:screenY];
+    [cellCopy setWidth:CGRectGetWidth(tableView.frame)];
     [cellCopy setupWithFund:fund];
     
     WOSendViewController *controller = [[WOSendViewController alloc] init];
     controller.initialY = CGRectGetMinY(cellCopy.frame);
     controller.fundCell = cellCopy;
+    [controller getScreenshot];
     
     [self presentViewController:controller animated:NO completion:nil];
 }
