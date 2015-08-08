@@ -10,7 +10,9 @@
 
 #import "UIView+WOAdditions.h"
 #import "WOConstants.h"
+#import "WOFund.h"
 #import "WOFundTableViewCell.h"
+#import "WOSendViewController.h"
 
 @interface WOHomeViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) NSMutableArray *feedItems;
@@ -26,8 +28,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self _setupView];
 }
@@ -42,8 +43,7 @@
     return [self.feedItems count] + 14;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [WOFundTableViewCell heightGivenFund:nil widthConstraint:CGRectGetWidth(tableView.frame)];
 }
 
@@ -54,6 +54,19 @@
         cell = [[WOFundTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifider];
     }
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    WOFund *fund = nil; //self.feedItems[indexPath.row];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    WOFundTableViewCell *cellCopy = [[WOFundTableViewCell alloc] initWithFrame:cell.frame];
+    [cellCopy setupWithFund:fund];
+    
+    WOSendViewController *controller = [[WOSendViewController alloc] init];
+    controller.initialY = CGRectGetMinY(cellCopy.frame);
+    controller.fundCell = cellCopy;
+    
+    [self presentViewController:controller animated:NO completion:nil];
 }
 
 #pragma mark - Private Methods

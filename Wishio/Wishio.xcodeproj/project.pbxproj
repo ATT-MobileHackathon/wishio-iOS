@@ -13,6 +13,7 @@
 		2746C99B1B768EEA0094762F /* WOFund.m in Sources */ = {isa = PBXBuildFile; fileRef = 2746C99A1B768EEA0094762F /* WOFund.m */; };
 		2746C99E1B7690020094762F /* WOProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 2746C99D1B7690020094762F /* WOProduct.m */; };
 		2746C9A21B76941D0094762F /* WOOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 2746C9A11B76941D0094762F /* WOOperations.m */; };
+		2746C9A51B7699D00094762F /* WOSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2746C9A41B7699D00094762F /* WOSendViewController.m */; };
 		27807D941B76044E00E52F92 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27807D931B76044E00E52F92 /* main.m */; };
 		27807D971B76044E00E52F92 /* WOAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27807D961B76044E00E52F92 /* WOAppDelegate.m */; };
 		27807D9A1B76044E00E52F92 /* WOHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27807D991B76044E00E52F92 /* WOHomeViewController.m */; };
@@ -46,6 +47,8 @@
 		2746C99D1B7690020094762F /* WOProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOProduct.m; sourceTree = "<group>"; };
 		2746C9A01B76941D0094762F /* WOOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOOperations.h; sourceTree = "<group>"; };
 		2746C9A11B76941D0094762F /* WOOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOOperations.m; sourceTree = "<group>"; };
+		2746C9A31B7699D00094762F /* WOSendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOSendViewController.h; sourceTree = "<group>"; };
+		2746C9A41B7699D00094762F /* WOSendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOSendViewController.m; sourceTree = "<group>"; };
 		27807D8E1B76044E00E52F92 /* Wishio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wishio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27807D921B76044E00E52F92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27807D931B76044E00E52F92 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -110,6 +113,8 @@
 			children = (
 				27807D981B76044E00E52F92 /* WOHomeViewController.h */,
 				27807D991B76044E00E52F92 /* WOHomeViewController.m */,
+				2746C9A31B7699D00094762F /* WOSendViewController.h */,
+				2746C9A41B7699D00094762F /* WOSendViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -361,6 +366,7 @@
 				27807DB91B76164600E52F92 /* UIColor+WOColors.m in Sources */,
 				27807D971B76044E00E52F92 /* WOAppDelegate.m in Sources */,
 				27807D941B76044E00E52F92 /* main.m in Sources */,
+				2746C9A51B7699D00094762F /* WOSendViewController.m in Sources */,
 				2746C9981B768ED60094762F /* WOUser.m in Sources */,
 				2746C99B1B768EEA0094762F /* WOFund.m in Sources */,
 				2746C9901B7651A60094762F /* WOFundTableViewCell.m in Sources */,
