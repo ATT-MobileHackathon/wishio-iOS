@@ -8,8 +8,11 @@
 
 #import "WOSendViewController.h"
 
+#import "FXBlurView.h"
+
 @interface WOSendViewController ()
 @property (strong, nonatomic) UIImageView *screenshot;
+@property (strong, nonatomic) FXBlurView *blurView;
 @end
 
 @implementation WOSendViewController
@@ -17,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.screenshot];
+    [self.view addSubview:self.blurView];
     [self.view addSubview:self.fundCell];
 }
 
@@ -36,6 +40,27 @@
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     self.screenshot = [[UIImageView alloc] initWithImage:image];
+    [self _updateScreenshot];
+    [self _setupBlurView];
+}
+
+#pragma mark - Private Methods
+
+- (void)_updateScreenshot
+{
+    UIView *blockingView = [[UIView alloc] init];
+    blockingView.backgroundColor = self.fundCell.backgroundColor;
+    [blockingView setFrame:self.fundCell.frame];
+    [self.screenshot addSubview:blockingView];
+}
+
+- (void)_setupBlurView
+{
+    self.blurView = [[FXBlurView alloc] init];
+    [self.blurView setFrame:self.screenshot.frame];
+    self.blurView.tintColor = [UIColor blackColor];
+    self.blurView.blurRadius = 10.f;
+    self.blurView.dynamic = NO;
 }
 
 @end
