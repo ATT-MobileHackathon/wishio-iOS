@@ -8,6 +8,7 @@
 
 #import "WOHomeViewController.h"
 
+#import "UIView+WOAdditions.h"
 #import "WOFundTableViewCell.h"
 
 @interface WOHomeViewController () <UITableViewDelegate, UITableViewDataSource>
