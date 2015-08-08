@@ -64,11 +64,25 @@
     }
 }
 
+- (void)fillWidthWithMargin:(CGFloat)margin {
+    if (self.superview) {
+        [self fillWidth];
+        [self setWidth:CGRectGetWidth(self.frame) - margin];
+    }
+}
+
 - (void)fillHeight {
     if (self.superview) {
         CGRect frame = self.frame;
         frame.size.height = CGRectGetHeight(self.superview.frame) - CGRectGetMinY(self.frame);
         self.frame = frame;
+    }
+}
+
+- (void)fillHeightWithMargin:(CGFloat)margin {
+    if (self.superview) {
+        [self fillHeight];
+        [self setHeight:CGRectGetHeight(self.frame) - margin];
     }
 }
 

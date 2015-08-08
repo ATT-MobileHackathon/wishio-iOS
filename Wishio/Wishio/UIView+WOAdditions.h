@@ -13,7 +13,9 @@
 - (void)setX:(CGFloat)x;
 - (void)setY:(CGFloat)y;
 - (void)setWidth:(CGFloat)width;
+- (void)fillWidthWithMargin:(CGFloat)margin;
 - (void)setHeight:(CGFloat)height;
+- (void)fillHeightWithMargin:(CGFloat)margin;
 - (void)setSize:(CGSize)size;
 - (void)alignRightWithMargin:(CGFloat)margin;
 - (void)alignBottomWithMargin:(CGFloat)margin;

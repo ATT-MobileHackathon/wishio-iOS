@@ -41,6 +41,12 @@
         self.usernameLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         [self.contentView addSubview:self.usernameLabel];
         
+        self.productName = [[UILabel alloc] init];
+        self.productName.font = [UIFont systemFontOfSize:17.f];
+        self.productName.numberOfLines = 0;
+        self.productName.lineBreakMode = NSLineBreakByTruncatingTail;
+        [self.contentView addSubview:self.productName];
+        
         self.bottomDivider = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, DIVIDER_HEIGHT())];
         self.bottomDivider.backgroundColor = [UIColor borderColor];
         [self.contentView addSubview:self.bottomDivider];
@@ -61,15 +67,22 @@
     [self.userProfileImageView setX:SIDE_MARGIN];
     [self.userProfileImageView setY:VERTICAL_MARGIN];
     
-    [self.usernameLabel setHeight:CGRectGetHeight(self.userProfileImageView.frame)];
     [self.usernameLabel setX:CGRectGetMaxX(self.userProfileImageView.frame) + TEXT_MARGIN];
     [self.usernameLabel setY:CGRectGetMinY(self.userProfileImageView.frame)];
-    [self.usernameLabel fillWidth];
+    [self.usernameLabel fillWidthWithMargin:TEXT_MARGIN];
+    [self.usernameLabel setHeight:CGRectGetHeight(self.userProfileImageView.frame)];
     self.usernameLabel.text = @"Test Username";
     
+    self.productName.text = @"Product name";
+    [self.productName setX:CGRectGetMinX(self.usernameLabel.frame)];
+    [self.productName setY:CGRectGetMaxY(self.usernameLabel.frame)];
+    [self.productName fillWidthWithMargin:TEXT_MARGIN];
+    CGFloat height = [self.productName sizeThatFits:CGSizeMake(CGRectGetWidth(self.productName.frame), CGFLOAT_MAX)].height;
+    [self.productName setHeight:height];
+    
     [self.bottomDivider setX:CGRectGetMinX(self.usernameLabel.frame)];
-    [self.bottomDivider fillWidth];
     [self.bottomDivider alignBottomWithMargin:0];
+    [self.bottomDivider fillWidth];
 }
 
 #pragma mark - Public Methods
@@ -81,7 +94,7 @@
 
 + (CGFloat)height
 {
-    return VERTICAL_MARGIN + PROFILE_SIZE + VERTICAL_MARGIN;
+    return VERTICAL_MARGIN + PROFILE_SIZE + 100.f + VERTICAL_MARGIN;
 }
 
 @end
