@@ -57,7 +57,7 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [UIView animateWithDuration:0.30f animations:^{
+    [UIView animateWithDuration:0.25f animations:^{
         self.blurView.alpha = 1;
     }];
     [UIView animateWithDuration:0.50f delay:0 usingSpringWithDamping:DAMPING_FACTOR initialSpringVelocity:1 options:0 animations:^{
@@ -122,12 +122,13 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
 }
 
 - (void)_dismissSelf {
-    [UIView animateWithDuration:0.30f animations:^{
+    [UIView animateWithDuration:0.25f animations:^{
         self.blurView.alpha = 0;
     }];
     [UIView animateWithDuration:0.50f delay:0 usingSpringWithDamping:DAMPING_FACTOR initialSpringVelocity:1 options:0 animations:^{
         [self.fundCell setY:self.initialY];
         [self _placeCloseButtonAboveView];
+        self.dismissButton.alpha = 0;
     } completion:^(BOOL finished) {
         [self.navigationController popViewControllerAnimated:NO];
     }];
