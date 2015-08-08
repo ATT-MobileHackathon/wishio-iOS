@@ -26,11 +26,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    [self _setupView];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self _setupView];
+    [self.navigationController setNavigationBarHidden:NO];
 }
 
 #pragma mark - UITableViewDelegate / UITableViewDataSource
@@ -70,7 +71,7 @@
     controller.fundCell = cellCopy;
     [controller getScreenshot];
     
-    [self presentViewController:controller animated:NO completion:nil];
+    [self.navigationController pushViewController:controller animated:NO];
 }
 
 #pragma mark - Private Methods

@@ -27,7 +27,8 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
     if (self = [super init]) {
         self.dismissButton = [[UIButton alloc] init];
         [self.dismissButton setSize:CGSizeMake(BARBUTTON_SIZE, BARBUTTON_SIZE)];
-        [self.dismissButton addTarget:self action:@selector(_pressedDismiss:) forControlEvents:UIControlEventTouchUpInside];
+        [self.dismissButton setX:2.f]; //align with cell padding
+        [self.dismissButton addTarget:self action:@selector(_dismissSelf) forControlEvents:UIControlEventTouchUpInside];
         FAKIcon *closeIcon = [FAKIonIcons androidCloseIconWithSize:BARBUTTON_ICON_SIZE];
         [closeIcon setAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
         [self.dismissButton setImage:[closeIcon imageWithSize:CGSizeMake(BARBUTTON_ICON_SIZE, BARBUTTON_ICON_SIZE)]
@@ -48,6 +49,10 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
     [self _placeCloseButtonAboveView];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
+}
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [UIView animateWithDuration:0.30f animations:^{
@@ -108,8 +113,16 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
     [self.dismissButton setY:CGRectGetMinY(self.fundCell.frame) - CGRectGetHeight(self.dismissButton.frame)];
 }
 
-- (void)_pressedDismiss:(id)sender {
-    
+- (void)_dismissSelf {
+    [UIView animateWithDuration:0.30f animations:^{
+        self.blurView.alpha = 0;
+    }];
+    [UIView animateWithDuration:0.50f delay:0 usingSpringWithDamping:DAMPING_FACTOR initialSpringVelocity:1 options:0 animations:^{
+        [self.fundCell setY:self.initialY];
+        [self _placeCloseButtonAboveView];
+    } completion:^(BOOL finished) {
+        [self.navigationController popViewControllerAnimated:NO];
+    }];
 }
 
 @end
