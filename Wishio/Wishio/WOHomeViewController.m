@@ -18,6 +18,8 @@
 @interface WOHomeViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) NSArray *feedItems;
 @property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 @end
 
 @implementation WOHomeViewController
@@ -90,12 +92,25 @@
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:tableView];
     self.tableView = tableView;
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(_requestFeed) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
+    
+    self.activityIndicator = [[UIActivityIndicatorView alloc] init];
+    self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    [self.tableView addSubview:self.activityIndicator];
+    [self.activityIndicator centerHorizontally];
+    [self.activityIndicator setY:20.f];
+    [self.activityIndicator startAnimating];
 }
 
 - (void)_requestFeed {
     [WOOperations requestFeedWithParameters:nil success:^(NSArray *feedItems) {
         self.feedItems = feedItems;
         [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
+        [self.activityIndicator stopAnimating];
     } failure:nil];
 }
 
