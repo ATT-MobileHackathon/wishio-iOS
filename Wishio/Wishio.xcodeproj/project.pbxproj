@@ -12,6 +12,7 @@
 		27807D9A1B76044E00E52F92 /* WOHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27807D991B76044E00E52F92 /* WOHomeViewController.m */; };
 		27807D9F1B76044E00E52F92 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27807D9E1B76044E00E52F92 /* Images.xcassets */; };
 		27807DAE1B76044F00E52F92 /* WishioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27807DAD1B76044F00E52F92 /* WishioTests.m */; };
+		27807DB91B76164600E52F92 /* UIColor+WOColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 27807DB81B76164600E52F92 /* UIColor+WOColors.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,8 @@
 		27807DA71B76044F00E52F92 /* WishioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WishioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27807DAC1B76044F00E52F92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27807DAD1B76044F00E52F92 /* WishioTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WishioTests.m; sourceTree = "<group>"; };
+		27807DB71B76164600E52F92 /* UIColor+WOColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+WOColors.h"; sourceTree = "<group>"; };
+		27807DB81B76164600E52F92 /* UIColor+WOColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+WOColors.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,8 @@
 		27807D901B76044E00E52F92 /* Wishio */ = {
 			isa = PBXGroup;
 			children = (
+				27807DB71B76164600E52F92 /* UIColor+WOColors.h */,
+				27807DB81B76164600E52F92 /* UIColor+WOColors.m */,
 				27807D951B76044E00E52F92 /* WOAppDelegate.h */,
 				27807D961B76044E00E52F92 /* WOAppDelegate.m */,
 				27807D981B76044E00E52F92 /* WOHomeViewController.h */,
@@ -212,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27807D9A1B76044E00E52F92 /* WOHomeViewController.m in Sources */,
+				27807DB91B76164600E52F92 /* UIColor+WOColors.m in Sources */,
 				27807D971B76044E00E52F92 /* WOAppDelegate.m in Sources */,
 				27807D941B76044E00E52F92 /* main.m in Sources */,
 			);

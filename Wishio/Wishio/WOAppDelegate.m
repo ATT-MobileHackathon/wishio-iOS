@@ -9,6 +9,7 @@
 #import "WOAppDelegate.h"
 
 #import "WOHomeViewController.h"
+#import "UIColor+WOColors.h"
 
 @implementation WOAppDelegate
 
@@ -19,6 +20,24 @@
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    //red navbar
+    [[UINavigationBar appearance] setBarTintColor:[UIColor mainColor]];
+    
+    //no borderline for navbar
+    [[UINavigationBar appearance] setShadowImage:[UIImage new]];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    
+    //white text for navbar
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    
+    //white navigation items
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
+    [[UINavigationBar appearance] setTranslucent:NO];
+    
     return YES;
 }
 
