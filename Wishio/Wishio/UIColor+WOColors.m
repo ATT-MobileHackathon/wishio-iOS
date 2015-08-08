@@ -15,7 +15,7 @@
 }
 
 + (UIColor *)borderColor {
-    return [UIColor colorWithWhite:0.95 alpha:1];
+    return [UIColor colorWithWhite:0.90 alpha:1];
 }
 
 + (UIColor *)primaryTextColor {
@@ -23,6 +23,10 @@
 }
 
 + (UIColor *)secondaryTextColor {
+    return [UIColor colorWithWhite:0.85 alpha:1];
+}
+
++ (UIColor *)lighterGrayColor {
     return [UIColor colorWithWhite:0.85 alpha:1];
 }
 

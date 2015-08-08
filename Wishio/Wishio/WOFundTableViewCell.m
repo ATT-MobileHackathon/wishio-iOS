@@ -32,7 +32,7 @@
         self.userProfileImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, PROFILE_SIZE, PROFILE_SIZE)];
         self.userProfileImageView.clipsToBounds = YES;
         self.userProfileImageView.layer.cornerRadius = PROFILE_SIZE / 2;
-        self.userProfileImageView.backgroundColor = [UIColor lightGrayColor];
+        self.userProfileImageView.backgroundColor = [UIColor lighterGrayColor];
         [self.contentView addSubview:self.userProfileImageView];
         
         self.bottomDivider = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, DIVIDER_HEIGHT())];

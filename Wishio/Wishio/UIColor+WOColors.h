@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface UIColor (WOColors)
+
 + (UIColor *)mainColor;
 + (UIColor *)borderColor;
 + (UIColor *)primaryTextColor;
 + (UIColor *)secondaryTextColor;
++ (UIColor *)lighterGrayColor;
+
 @end
