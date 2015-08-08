@@ -27,7 +27,7 @@
 }
 
 + (UIColor *)lighterGrayColor {
-    return [UIColor colorWithWhite:0.90 alpha:1];
+    return [UIColor colorWithWhite:0.95 alpha:1];
 }
 
 + (UIColor *)lightGreenColor {
