@@ -8,21 +8,58 @@
 
 #import "WOHomeViewController.h"
 
-@interface WOHomeViewController ()
-
+@interface WOHomeViewController () <UITableViewDelegate, UITableViewDataSource>
+@property (strong, nonatomic) NSMutableArray *feedItems;
+@property (strong, nonatomic) UITableView *tableView;
 @end
 
 @implementation WOHomeViewController
 
+#pragma mark - View Controller LifeCycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self _setupView];
+}
+
+#pragma mark - UITableViewDelegate / UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [self.feedItems count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
+}
+
+#pragma mark - Private Methods
+
+- (void)_setupView {
+    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:tableView];
+    self.tableView = tableView;
+}
+
+#pragma mark - Lazy Instantiation
+
+- (NSMutableArray *)feedItems {
+    if (!_feedItems) {
+        _feedItems = [[NSMutableArray alloc] init];
+    }
+    return _feedItems;
 }
 
 @end
