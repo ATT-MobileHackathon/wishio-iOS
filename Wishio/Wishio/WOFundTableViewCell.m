@@ -197,7 +197,9 @@ static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
     }
     self.productName.text = fund.product.name;
     [self.productImageView setImageWithURL:fund.product.imageURL];
-    self.progress = (CGFloat) fund.currentFunding / fund.product.price;
+    if (fund) {
+        self.progress = (CGFloat) fund.currentFunding / fund.product.price;
+    }
     self.currentRaisedLabel.text = [fund currentFundingString];
     self.priceLabel.text = [NSString stringWithFormat:@"of %@", [fund.product priceString]];
     

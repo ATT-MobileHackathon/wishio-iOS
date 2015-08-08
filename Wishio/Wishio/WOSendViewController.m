@@ -107,7 +107,7 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
     UIView *blockingView = [[UIView alloc] init];
     blockingView.backgroundColor = self.fundCell.backgroundColor;
     [blockingView setFrame:self.fundCell.frame];
-    [blockingView setHeight:CGRectGetHeight(blockingView.frame)+21.f]; //some random adjustment...
+    [blockingView setHeight:CGRectGetHeight(blockingView.frame)];
     [screenshot addSubview:blockingView];
     
     UIView *navbar = [[UIView alloc] init];

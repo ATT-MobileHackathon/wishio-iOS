@@ -47,7 +47,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return [WOFundTableViewCell heightGivenFund:nil widthConstraint:CGRectGetWidth(tableView.frame)];
+    WOFund *fund = self.feedItems[indexPath.row];
+    return [WOFundTableViewCell heightGivenFund:fund widthConstraint:CGRectGetWidth(tableView.frame)];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
