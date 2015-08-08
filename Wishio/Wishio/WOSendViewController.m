@@ -9,11 +9,14 @@
 #import "WOSendViewController.h"
 
 #import "FXBlurView.h"
+#import "UIView+WOAdditions.h"
 
 @interface WOSendViewController ()
 @property (strong, nonatomic) UIImageView *screenshot;
-@property (strong, nonatomic) FXBlurView *blurView;
+@property (strong, nonatomic) UIImageView *blurView;
 @end
+
+static const CGFloat DAMPING_FACTOR = 0.70f;
 
 @implementation WOSendViewController
 
@@ -26,6 +29,12 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [UIView animateWithDuration:0.30f animations:^{
+        self.blurView.alpha = 1;
+    }];
+    [UIView animateWithDuration:0.50f delay:0 usingSpringWithDamping:DAMPING_FACTOR initialSpringVelocity:1 options:0 animations:^{
+        [self.fundCell centerVertically];
+    } completion:nil];
 }
 
 #pragma mark - Public Methods
@@ -51,16 +60,26 @@
     UIView *blockingView = [[UIView alloc] init];
     blockingView.backgroundColor = self.fundCell.backgroundColor;
     [blockingView setFrame:self.fundCell.frame];
+    [blockingView setHeight:CGRectGetHeight(blockingView.frame)+21.f]; //some random adjustment...
     [self.screenshot addSubview:blockingView];
 }
 
 - (void)_setupBlurView
 {
-    self.blurView = [[FXBlurView alloc] init];
+    UIImage *blurredImage = [self.screenshot.image blurredImageWithRadius:10.f iterations:2 tintColor:nil];
+    self.blurView = [[UIImageView alloc] initWithImage:blurredImage];
     [self.blurView setFrame:self.screenshot.frame];
-    self.blurView.tintColor = [UIColor blackColor];
-    self.blurView.blurRadius = 10.f;
-    self.blurView.dynamic = NO;
+    self.blurView.alpha = 0;
+    
+    UIView *blockingView = [[UIView alloc] init];
+    blockingView.backgroundColor = self.fundCell.backgroundColor;
+    [blockingView setFrame:self.fundCell.frame];
+    [blockingView setHeight:CGRectGetHeight(blockingView.frame)+21.f]; //some random adjustment...
+    [self.blurView addSubview:blockingView];
+    
+    UIView *darkTint = [[UIView alloc] initWithFrame:self.blurView.bounds];
+    darkTint.backgroundColor = [UIColor colorWithWhite:0 alpha:0.40];
+    [self.blurView addSubview:darkTint];
 }
 
 @end
