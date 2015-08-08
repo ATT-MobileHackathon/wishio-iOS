@@ -44,4 +44,36 @@
     }
 }
 
+- (void)fillWidth {
+    if (self.superview) {
+        CGRect frame = self.frame;
+        frame.size.width = CGRectGetWidth(self.superview.frame) - CGRectGetMinX(self.frame);
+        self.frame = frame;
+    }
+}
+
+- (void)fillHeight {
+    if (self.superview) {
+        CGRect frame = self.frame;
+        frame.size.height = CGRectGetHeight(self.superview.frame) - CGRectGetMinY(self.frame);
+        self.frame = frame;
+    }
+}
+
+- (void)centerHorizontally {
+    if (self.superview) {
+        CGRect frame = self.frame;
+        frame.origin.x = CGRectGetWidth(self.superview.frame)/2 - CGRectGetWidth(self.frame)/2;
+        self.frame = frame;
+    }
+}
+
+- (void)centerVertically {
+    if (self.superview) {
+        CGRect frame = self.frame;
+        frame.origin.y = CGRectGetHeight(self.superview.frame)/2 - CGRectGetHeight(self.frame)/2;
+        self.frame = frame;
+    }
+}
+
 @end

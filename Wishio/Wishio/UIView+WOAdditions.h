@@ -15,5 +15,9 @@
 - (void)setSize:(CGSize)size;
 - (void)alignRightWithMargin:(CGFloat)margin;
 - (void)alignBottomWithMargin:(CGFloat)margin;
+- (void)fillWidth;
+- (void)fillHeight;
+- (void)centerHorizontally;
+- (void)centerVertically;
 
 @end

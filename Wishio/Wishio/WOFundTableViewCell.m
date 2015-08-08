@@ -35,7 +35,7 @@
         self.userProfileImageView.backgroundColor = [UIColor lighterGrayColor];
         [self.contentView addSubview:self.userProfileImageView];
         
-        self.bottomDivider = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, DIVIDER_HEIGHT())];
+        self.bottomDivider = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, DIVIDER_HEIGHT())];
         self.bottomDivider.backgroundColor = [UIColor borderColor];
         [self.contentView addSubview:self.bottomDivider];
     }
@@ -56,6 +56,7 @@
     [self.userProfileImageView setY:VERTICAL_MARGIN];
     
     [self.bottomDivider setX:CGRectGetMaxX(self.userProfileImageView.frame)];
+    [self.bottomDivider fillWidth];
     [self.bottomDivider alignBottomWithMargin:0];
 }
 
