@@ -17,10 +17,12 @@
 @property UIImageView *userProfileImageView;
 @property UILabel *usernameLabel;
 @property UILabel *productName;
-@property UIImage *productImageView;
+@property UIImageView *productImageView;
 @property UILabel *contributersLabel;
 @property UIView *bottomDivider;
 @end
+
+static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
 
 @implementation WOFundTableViewCell
 
@@ -46,6 +48,12 @@
         self.productName.numberOfLines = 0;
         self.productName.lineBreakMode = NSLineBreakByTruncatingTail;
         [self.contentView addSubview:self.productName];
+        
+        self.productImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, PRODUCT_IMAGE_SIZE, PRODUCT_IMAGE_SIZE)];
+        self.productImageView.clipsToBounds = YES;
+        self.productImageView.layer.cornerRadius = 5.f;
+        self.productImageView.backgroundColor = [UIColor lighterGrayColor];
+        [self.contentView addSubview:self.productImageView];
         
         self.bottomDivider = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, DIVIDER_HEIGHT())];
         self.bottomDivider.backgroundColor = [UIColor borderColor];
@@ -80,8 +88,11 @@
     CGFloat height = [self.productName sizeThatFits:CGSizeMake(CGRectGetWidth(self.productName.frame), CGFLOAT_MAX)].height;
     [self.productName setHeight:height];
     
+    [self.productImageView setX:CGRectGetMinX(self.usernameLabel.frame)];
+    [self.productImageView setY:CGRectGetMaxY(self.productName.frame) + TEXT_MARGIN];
+    
     [self.bottomDivider setX:CGRectGetMinX(self.usernameLabel.frame)];
-    [self.bottomDivider setY:CGRectGetMaxY(self.productName.frame) + VERTICAL_MARGIN];
+    [self.bottomDivider setY:CGRectGetMaxY(self.productImageView.frame) + VERTICAL_MARGIN];
     [self.bottomDivider fillWidth];
     
     [self setHeight:CGRectGetMaxY(self.bottomDivider.frame)];
