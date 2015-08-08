@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2746C9901B7651A60094762F /* WOFundTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2746C98F1B7651A60094762F /* WOFundTableViewCell.m */; };
 		27807D941B76044E00E52F92 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27807D931B76044E00E52F92 /* main.m */; };
 		27807D971B76044E00E52F92 /* WOAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27807D961B76044E00E52F92 /* WOAppDelegate.m */; };
 		27807D9A1B76044E00E52F92 /* WOHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27807D991B76044E00E52F92 /* WOHomeViewController.m */; };
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2746C98E1B7651A60094762F /* WOFundTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOFundTableViewCell.h; sourceTree = "<group>"; };
+		2746C98F1B7651A60094762F /* WOFundTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOFundTableViewCell.m; sourceTree = "<group>"; };
 		27807D8E1B76044E00E52F92 /* Wishio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wishio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27807D921B76044E00E52F92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27807D931B76044E00E52F92 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -74,6 +77,8 @@
 		2746C98B1B764FDF0094762F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2746C98E1B7651A60094762F /* WOFundTableViewCell.h */,
+				2746C98F1B7651A60094762F /* WOFundTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -311,6 +316,7 @@
 				27807DB91B76164600E52F92 /* UIColor+WOColors.m in Sources */,
 				27807D971B76044E00E52F92 /* WOAppDelegate.m in Sources */,
 				27807D941B76044E00E52F92 /* main.m in Sources */,
+				2746C9901B7651A60094762F /* WOFundTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
