@@ -15,5 +15,6 @@
 + (UIColor *)primaryTextColor;
 + (UIColor *)secondaryTextColor;
 + (UIColor *)lighterGrayColor;
++ (UIColor *)lightGreenColor;
 
 @end

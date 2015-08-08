@@ -30,6 +30,10 @@
     return [UIColor colorWithWhite:0.90 alpha:1];
 }
 
++ (UIColor *)lightGreenColor {
+    return [UIColor colorWithRed:46/255.0 green:204/255.0 blue:113/255.0 alpha:1];
+}
+
 #pragma mark - Private Methods
 
 + (UIColor *)colorWithIntRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha
