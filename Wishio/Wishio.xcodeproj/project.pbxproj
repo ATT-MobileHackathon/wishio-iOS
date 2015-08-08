@@ -8,11 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		27807D941B76044E00E52F92 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27807D931B76044E00E52F92 /* main.m */; };
-		27807D971B76044E00E52F92 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27807D961B76044E00E52F92 /* AppDelegate.m */; };
-		27807D9A1B76044E00E52F92 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27807D991B76044E00E52F92 /* ViewController.m */; };
-		27807D9D1B76044E00E52F92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27807D9B1B76044E00E52F92 /* Main.storyboard */; };
+		27807D971B76044E00E52F92 /* WOAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27807D961B76044E00E52F92 /* WOAppDelegate.m */; };
+		27807D9A1B76044E00E52F92 /* WOHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27807D991B76044E00E52F92 /* WOHomeViewController.m */; };
 		27807D9F1B76044E00E52F92 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27807D9E1B76044E00E52F92 /* Images.xcassets */; };
-		27807DA21B76044E00E52F92 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27807DA01B76044E00E52F92 /* LaunchScreen.xib */; };
 		27807DAE1B76044F00E52F92 /* WishioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27807DAD1B76044F00E52F92 /* WishioTests.m */; };
 /* End PBXBuildFile section */
 
@@ -30,13 +28,11 @@
 		27807D8E1B76044E00E52F92 /* Wishio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wishio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27807D921B76044E00E52F92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27807D931B76044E00E52F92 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		27807D951B76044E00E52F92 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		27807D961B76044E00E52F92 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		27807D981B76044E00E52F92 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		27807D991B76044E00E52F92 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		27807D9C1B76044E00E52F92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		27807D951B76044E00E52F92 /* WOAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WOAppDelegate.h; sourceTree = "<group>"; };
+		27807D961B76044E00E52F92 /* WOAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WOAppDelegate.m; sourceTree = "<group>"; };
+		27807D981B76044E00E52F92 /* WOHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WOHomeViewController.h; sourceTree = "<group>"; };
+		27807D991B76044E00E52F92 /* WOHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WOHomeViewController.m; sourceTree = "<group>"; };
 		27807D9E1B76044E00E52F92 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		27807DA11B76044E00E52F92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		27807DA71B76044F00E52F92 /* WishioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WishioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27807DAC1B76044F00E52F92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27807DAD1B76044F00E52F92 /* WishioTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WishioTests.m; sourceTree = "<group>"; };
@@ -81,13 +77,11 @@
 		27807D901B76044E00E52F92 /* Wishio */ = {
 			isa = PBXGroup;
 			children = (
-				27807D951B76044E00E52F92 /* AppDelegate.h */,
-				27807D961B76044E00E52F92 /* AppDelegate.m */,
-				27807D981B76044E00E52F92 /* ViewController.h */,
-				27807D991B76044E00E52F92 /* ViewController.m */,
-				27807D9B1B76044E00E52F92 /* Main.storyboard */,
+				27807D951B76044E00E52F92 /* WOAppDelegate.h */,
+				27807D961B76044E00E52F92 /* WOAppDelegate.m */,
+				27807D981B76044E00E52F92 /* WOHomeViewController.h */,
+				27807D991B76044E00E52F92 /* WOHomeViewController.m */,
 				27807D9E1B76044E00E52F92 /* Images.xcassets */,
-				27807DA01B76044E00E52F92 /* LaunchScreen.xib */,
 				27807D911B76044E00E52F92 /* Supporting Files */,
 			);
 			path = Wishio;
@@ -199,8 +193,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27807D9D1B76044E00E52F92 /* Main.storyboard in Resources */,
-				27807DA21B76044E00E52F92 /* LaunchScreen.xib in Resources */,
 				27807D9F1B76044E00E52F92 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,8 +211,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27807D9A1B76044E00E52F92 /* ViewController.m in Sources */,
-				27807D971B76044E00E52F92 /* AppDelegate.m in Sources */,
+				27807D9A1B76044E00E52F92 /* WOHomeViewController.m in Sources */,
+				27807D971B76044E00E52F92 /* WOAppDelegate.m in Sources */,
 				27807D941B76044E00E52F92 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,25 +234,6 @@
 			targetProxy = 27807DA81B76044F00E52F92 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		27807D9B1B76044E00E52F92 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				27807D9C1B76044E00E52F92 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		27807DA01B76044E00E52F92 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				27807DA11B76044E00E52F92 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		27807DAF1B76044F00E52F92 /* Debug */ = {

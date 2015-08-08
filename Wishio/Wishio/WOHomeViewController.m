@@ -1,18 +1,18 @@
 //
-//  ViewController.m
+//  WOViewController.m
 //  Wishio
 //
 //  Created by Andrew on 8/8/15.
 //  Copyright (c) 2015 Wishio. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "WOHomeViewController.h"
 
-@interface ViewController ()
+@interface WOHomeViewController ()
 
 @end
 
-@implementation ViewController
+@implementation WOHomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

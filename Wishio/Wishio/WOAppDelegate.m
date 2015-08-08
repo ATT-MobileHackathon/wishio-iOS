@@ -1,18 +1,18 @@
 //
-//  AppDelegate.m
+//  WOAppDelegate.m
 //  Wishio
 //
 //  Created by Andrew on 8/8/15.
 //  Copyright (c) 2015 Wishio. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "WOAppDelegate.h"
 
-@interface AppDelegate ()
+@interface WOAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation WOAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

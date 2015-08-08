@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  WOAppDelegate.h
 //  Wishio
 //
 //  Created by Andrew on 8/8/15.
@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface WOAppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (strong, nonatomic) UIWindow *window;
 
 
 @end
