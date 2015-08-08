@@ -10,5 +10,5 @@
 
 @interface WOFundTableViewCell : UITableViewCell
 - (void)setupWithFund:(id)fund;
-+ (CGFloat)height;
++ (CGFloat)heightGivenFund:(id)fund widthConstraint:(CGFloat)width;
 @end

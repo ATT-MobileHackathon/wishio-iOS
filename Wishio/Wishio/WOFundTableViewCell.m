@@ -81,20 +81,28 @@
     [self.productName setHeight:height];
     
     [self.bottomDivider setX:CGRectGetMinX(self.usernameLabel.frame)];
-    [self.bottomDivider alignBottomWithMargin:0];
+    [self.bottomDivider setY:CGRectGetMaxY(self.productName.frame) + VERTICAL_MARGIN];
     [self.bottomDivider fillWidth];
+    
+    [self setHeight:CGRectGetMaxY(self.bottomDivider.frame)];
 }
 
 #pragma mark - Public Methods
 
 - (void)setupWithFund:(id)fund
 {
-    
+    [self layoutSubviews];
 }
 
-+ (CGFloat)height
++ (CGFloat)heightGivenFund:(id)fund widthConstraint:(CGFloat)width
 {
-    return VERTICAL_MARGIN + PROFILE_SIZE + 100.f + VERTICAL_MARGIN;
+    static WOFundTableViewCell *cell;
+    if (!cell) {
+        cell = [[WOFundTableViewCell alloc] init];
+    }
+    [cell setWidth:width];
+    [cell setupWithFund:fund];
+    return CGRectGetHeight(cell.frame);
 }
 
 @end

@@ -44,7 +44,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [WOFundTableViewCell height];
+    return [WOFundTableViewCell heightGivenFund:nil widthConstraint:CGRectGetWidth(tableView.frame)];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
