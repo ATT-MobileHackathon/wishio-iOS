@@ -16,7 +16,7 @@
 #import "WOSendViewController.h"
 
 @interface WOHomeViewController () <UITableViewDelegate, UITableViewDataSource>
-@property (strong, nonatomic) NSMutableArray *feedItems;
+@property (strong, nonatomic) NSArray *feedItems;
 @property (strong, nonatomic) UITableView *tableView;
 @end
 
@@ -43,7 +43,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [self.feedItems count] + 14;
+    return [self.feedItems count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -55,12 +55,15 @@
     WOFundTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifider];
     if (!cell) {
         cell = [[WOFundTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifider];
+        [cell setWidth:CGRectGetWidth(tableView.frame)];
     }
+    WOFund *fund = self.feedItems[indexPath.row];
+    [cell setupWithFund:fund];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    WOFund *fund = nil; //self.feedItems[indexPath.row];
+    WOFund *fund = self.feedItems[indexPath.row];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     WOFundTableViewCell *cellCopy = [[WOFundTableViewCell alloc] init];
     CGFloat screenY = [tableView convertPoint:cell.frame.origin toView:nil].y;
@@ -89,16 +92,17 @@
 }
 
 - (void)_requestFeed {
-    [WOOperations requestFeedWithParameters:nil success:^(NSArray *array) {
-        
+    [WOOperations requestFeedWithParameters:nil success:^(NSArray *feedItems) {
+        self.feedItems = feedItems;
+        [self.tableView reloadData];
     } failure:nil];
 }
 
 #pragma mark - Lazy Instantiation
 
-- (NSMutableArray *)feedItems {
+- (NSArray *)feedItems {
     if (!_feedItems) {
-        _feedItems = [[NSMutableArray alloc] init];
+        _feedItems = [[NSArray alloc] init];
     }
     return _feedItems;
 }
