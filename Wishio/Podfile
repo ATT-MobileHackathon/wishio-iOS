@@ -1,0 +1,8 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '7.0'
+
+pod 'AFNetworking', '~> 2.0'
+pod 'FontAwesomeKit', :git => 'https://github.com/PrideChung/FontAwesomeKit.git'
+pod 'UICKeyChainStore'
+pod 'Mantle'
+pod 'FXBlurView'
