@@ -22,7 +22,7 @@
 
 - (NSString *)currentFundingString {
     NSMutableString *result = [[NSMutableString alloc] init];
-    [result setString:[NSString stringWithFormat:@"$%li", self.currentFunding]];
+    [result setString:[NSString stringWithFormat:@"$%d", (int)self.currentFunding]];
     [result insertString:@"." atIndex:[result length] - 2];
     return result;
 }

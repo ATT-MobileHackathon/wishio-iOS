@@ -191,10 +191,13 @@ static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
 {
     [self.userProfileImageView setImageWithURL:fund.user.imageURL];
     self.usernameLabel.text = fund.user.name;
-    self.contributersLabel.text = [NSString stringWithFormat:@"%li contributors", fund.funderCount];
+    self.contributersLabel.text = [NSString stringWithFormat:@"%d contributors", (int)fund.funderCount];
+    if (fund.funderCount == 1) {
+        self.contributersLabel.text = [self.contributersLabel.text substringToIndex:[self.contributersLabel.text length]-1];
+    }
     self.productName.text = fund.product.name;
     [self.productImageView setImageWithURL:fund.product.imageURL];
-    self.progress = fund.currentFunding / fund.product.price;
+    self.progress = ((CGFloat)fund.currentFunding) / fund.product.price;
     self.currentRaisedLabel.text = [fund currentFundingString];
     self.priceLabel.text = [NSString stringWithFormat:@"of %@", [fund.product priceString]];
     

@@ -28,14 +28,14 @@ static NSString * FEED_ENDPOINT = @"/funds/retrieve";
         NSArray *fundJSONs = responseObject[@"funds"];
         for (NSDictionary *fundJSON in fundJSONs) {
             WOFund *fund = [[WOFund alloc] init];
-            fund.funderCount = (long)fundJSON[@"total_funders"];
-            fund.currentFunding = (long)fundJSON[@"currently_funded"];
+            fund.funderCount = [fundJSON[@"total_funders"] intValue];
+            fund.currentFunding = [fundJSON[@"currently_funded"] intValue];
             
             NSDictionary *productJSON = fundJSON[@"item"];
             WOProduct *product = [[WOProduct alloc] init];
             product.name = productJSON[@"name"];
             product.imageURL = [NSURL URLWithString:productJSON[@"image"]];
-            product.price = (long)productJSON[@"price"];
+            product.price = [productJSON[@"price"] intValue];
             
             NSDictionary *userJSON = fundJSON[@"user"];
             WOUser *user = [[WOUser alloc] init];

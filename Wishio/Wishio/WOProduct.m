@@ -24,7 +24,7 @@
 
 - (NSString *)priceString {
     NSMutableString *result = [[NSMutableString alloc] init];
-    [result setString:[NSString stringWithFormat:@"$%li", self.price]];
+    [result setString:[NSString stringWithFormat:@"$%d", (int)self.price]];
     [result insertString:@"." atIndex:[result length] - 2];
     return result;
 }
