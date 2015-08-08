@@ -7,7 +7,9 @@
 //
 
 #import "WOOperations.h"
+
 #import "AFNetworking.h"
+#import "WOFund.h"
 
 static const NSString * BASE_URL = @"https://214b7bb7.ngrok.com";
 static NSString * FEED_ENDPOINT = @"/funds/retrieve";
@@ -20,7 +22,29 @@ static NSString * FEED_ENDPOINT = @"/funds/retrieve";
 {
     NSString *URL = [BASE_URL stringByAppendingString:FEED_ENDPOINT];
     [[AFHTTPRequestOperationManager manager] GET:URL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSArray *funds = responseObject[@"funds"];
+        NSMutableArray *funds = [[NSMutableArray alloc] init];
+        NSArray *fundJSONs = responseObject[@"funds"];
+        for (NSDictionary *fundJSON in fundJSONs) {
+            WOFund *fund = [[WOFund alloc] init];
+            fund.funderCount = (long)fundJSON[@"total_funders"];
+            fund.currentFunding = (long)fundJSON[@"currently_funded"];
+            
+            NSDictionary *productJSON = fundJSON[@"item"];
+            WOProduct *product = [[WOProduct alloc] init];
+            product.name = productJSON[@"name"];
+            product.imageURL = [NSURL URLWithString:productJSON[@"image"]];
+            product.price = (long)productJSON[@"price"];
+            
+            NSDictionary *userJSON = fundJSON[@"user"];
+            WOUser *user = [[WOUser alloc] init];
+            user.name = userJSON[@"name"];
+            user.imageURL = [NSURL URLWithString:userJSON[@"image"]];
+            
+            fund.product = product;
+            fund.user = user;
+            
+            [funds addObject:fund];
+        }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (failure) {

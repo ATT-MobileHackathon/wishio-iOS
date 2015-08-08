@@ -10,4 +10,14 @@
 
 @implementation WOProduct
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"imageURL" : @"image"
+             };
+}
+
++ (NSValueTransformer *)imageURLJSONTransformer {
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
 @end

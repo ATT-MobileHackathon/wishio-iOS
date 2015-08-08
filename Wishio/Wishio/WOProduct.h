@@ -12,5 +12,6 @@
 
 @property (copy, nonatomic) NSString *name;
 @property (assign, nonatomic) NSInteger price;
+@property (copy, nonatomic) NSURL *imageURL;
 
 @end
