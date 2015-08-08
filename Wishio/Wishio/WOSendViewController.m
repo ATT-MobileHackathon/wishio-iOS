@@ -10,6 +10,7 @@
 
 #import "FontAwesomeKit.h"
 #import "FXBlurView.h"
+#import "UIColor+WOColors.h"
 #import "UIView+WOAdditions.h"
 #import "WOConstants.h"
 
@@ -43,6 +44,7 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
     [self.view addSubview:self.blurView];
     [self.view addSubview:self.fundCell];
     [self.view addSubview:self.dismissButton];
+    [self _placeCloseButtonAboveView];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -84,11 +86,7 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
 
 - (void)_updateScreenshot
 {
-    UIView *blockingView = [[UIView alloc] init];
-    blockingView.backgroundColor = self.fundCell.backgroundColor;
-    [blockingView setFrame:self.fundCell.frame];
-    [blockingView setHeight:CGRectGetHeight(blockingView.frame)+21.f]; //some random adjustment...
-    [self.screenshot addSubview:blockingView];
+    [self _addBlockViewsToScreenshot:self.screenshot];
 }
 
 - (void)_setupBlurView
@@ -98,15 +96,25 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
     [self.blurView setFrame:self.screenshot.frame];
     self.blurView.alpha = 0;
     
-    UIView *blockingView = [[UIView alloc] init];
-    blockingView.backgroundColor = self.fundCell.backgroundColor;
-    [blockingView setFrame:self.fundCell.frame];
-    [blockingView setHeight:CGRectGetHeight(blockingView.frame)+21.f]; //some random adjustment...
-    [self.blurView addSubview:blockingView];
+    [self _addBlockViewsToScreenshot:self.blurView];
     
     UIView *darkTint = [[UIView alloc] initWithFrame:self.blurView.bounds];
     darkTint.backgroundColor = [UIColor colorWithWhite:0 alpha:0.40];
     [self.blurView addSubview:darkTint];
+}
+
+- (void)_addBlockViewsToScreenshot:(UIView *)screenshot {
+    UIView *blockingView = [[UIView alloc] init];
+    blockingView.backgroundColor = self.fundCell.backgroundColor;
+    [blockingView setFrame:self.fundCell.frame];
+    [blockingView setHeight:CGRectGetHeight(blockingView.frame)+21.f]; //some random adjustment...
+    [screenshot addSubview:blockingView];
+    
+    UIView *navbar = [[UIView alloc] init];
+    [navbar setWidth:CGRectGetWidth(screenshot.frame)];
+    [navbar setHeight:NAVBAR_HEIGHT];
+    navbar.backgroundColor = [UIColor mainColor];
+    [screenshot addSubview:navbar];
 }
 
 - (void)_placeCloseButtonAboveView {
