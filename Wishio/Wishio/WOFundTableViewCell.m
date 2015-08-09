@@ -48,6 +48,7 @@ static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
         self.backgroundColor = [UIColor whiteColor];
         
         self.userProfileImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, PROFILE_SIZE, PROFILE_SIZE)];
+        self.userProfileImageView.contentMode = UIViewContentModeScaleAspectFill;
         self.userProfileImageView.clipsToBounds = YES;
         self.userProfileImageView.layer.cornerRadius = PROFILE_SIZE / 2;
         self.userProfileImageView.backgroundColor = [UIColor lighterGrayColor];
@@ -74,6 +75,7 @@ static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
         [self.contentView addSubview:self.productName];
         
         self.productImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, PRODUCT_IMAGE_SIZE, PRODUCT_IMAGE_SIZE)];
+        self.productImageView.contentMode = UIViewContentModeScaleAspectFill;
         self.productImageView.clipsToBounds = YES;
         self.productImageView.layer.cornerRadius = 5.f;
         self.productImageView.backgroundColor = [UIColor lighterGrayColor];
