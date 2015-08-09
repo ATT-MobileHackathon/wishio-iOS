@@ -44,12 +44,15 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
         self.textField = [[UITextField alloc] init];
         self.textField.backgroundColor = [UIColor whiteColor];
         self.textField.keyboardType = UIKeyboardTypeNumberPad;
+        self.textField.font = [UIFont systemFontOfSize:14.f];
+        self.textField.placeholder = @"          $$";
         self.textField.layer.cornerRadius = 3.f;
         
         self.sendButton = [[UIButton alloc] init];
         self.sendButton.backgroundColor = [UIColor lightGreenColor];
         self.sendButton.layer.cornerRadius = 3.f;
         [self.sendButton setTitle:@"Send" forState:UIControlStateNormal];
+        self.sendButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.f];
         [self.sendButton addTarget:self action:@selector(_pressedDone) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
