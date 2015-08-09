@@ -73,7 +73,7 @@ static NSString * FUND_ENDPOINT = @"/funds/contribute";
     parameters[@"fund_id"] = @(fund.fundId);
     parameters[@"user_id"] = @1;
     parameters[@"contribution"] = @(amount);
-    [[AFHTTPRequestOperationManager manager] GET:URL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[AFHTTPRequestOperationManager manager] POST:URL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (success) {
             success();
         }
