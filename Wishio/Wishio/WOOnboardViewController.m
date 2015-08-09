@@ -25,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    self.title = @"Sign up";
     
 //    self.label = [[UILabel alloc] initWithFrame:CGRectMake(10, 200, 350, 50)];
 //    self.label.text = @"Pinterest Username";
