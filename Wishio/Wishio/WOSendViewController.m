@@ -84,6 +84,7 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
     }];
     [UIView animateWithDuration:0.50f delay:0 usingSpringWithDamping:DAMPING_FACTOR initialSpringVelocity:1 options:0 animations:^{
         [self.fundCell centerVertically];
+        [self.fundCell setY:CGRectGetMinY(self.fundCell.frame)-50.f]; // lol jesus christ
         self.fundCell.sendMoneyButton.alpha = 0;
         [self _placeCloseButtonAboveView];
         [self _positionActionsBelowView];
@@ -168,6 +169,7 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
 }
 
 - (void)_dismissSelf {
+    [self.textField resignFirstResponder];
     [UIView animateWithDuration:0.25f animations:^{
         self.blurView.alpha = 0;
     }];
