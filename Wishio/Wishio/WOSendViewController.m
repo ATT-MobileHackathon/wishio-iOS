@@ -19,6 +19,10 @@
 @property (strong, nonatomic) UIButton *dismissButton;
 @property (strong, nonatomic) UIImageView *screenshot;
 @property (strong, nonatomic) UIImageView *blurView;
+
+@property (strong, nonatomic) UITextField *textField;
+@property (strong, nonatomic) UIButton *sendButton;
+
 @end
 
 static const CGFloat DAMPING_FACTOR = 0.70f;
@@ -35,6 +39,15 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
         [closeIcon setAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
         [self.dismissButton setImage:[closeIcon imageWithSize:CGSizeMake(BARBUTTON_ICON_SIZE, BARBUTTON_ICON_SIZE)]
                             forState:UIControlStateNormal];
+        
+        self.textField = [[UITextField alloc] init];
+        self.textField.backgroundColor = [UIColor whiteColor];
+        self.textField.layer.cornerRadius = 3.f;
+        
+        self.sendButton = [[UIButton alloc] init];
+        self.sendButton.backgroundColor = [UIColor lightGreenColor];
+        self.sendButton.layer.cornerRadius = 3.f;
+        [self.sendButton setTitle:@"Send" forState:UIControlStateNormal];
     }
     return self;
 }
@@ -45,15 +58,20 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
     [self.view addSubview:self.blurView];
     [self.view addSubview:self.fundCell];
     [self.view addSubview:self.dismissButton];
-    [self _placeCloseButtonAboveView];
+    [self.view addSubview:self.textField];
+    [self.view addSubview:self.sendButton];
 }
 
 - (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
     [self _placeCloseButtonAboveView];
+    [self _positionActionsBelowView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self _placeCloseButtonAboveView];
+    [self _positionActionsBelowView];
     [self.navigationController setNavigationBarHidden:YES];
 }
 - (void)viewDidAppear:(BOOL)animated {
@@ -65,6 +83,7 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
         [self.fundCell centerVertically];
         self.fundCell.sendMoneyButton.alpha = 0;
         [self _placeCloseButtonAboveView];
+        [self _positionActionsBelowView];
     } completion:nil];
 }
 
@@ -123,6 +142,17 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
     [self.dismissButton setY:CGRectGetMinY(self.fundCell.frame) - CGRectGetHeight(self.dismissButton.frame)];
 }
 
+- (void)_positionActionsBelowView {
+    [self.textField setWidth:100.f];
+    [self.textField setHeight:40.f];
+    [self.sendButton setWidth:100.f];
+    [self.sendButton setHeight:40.f];
+    [self.textField setX:CGRectGetMidX(self.view.frame)-CGRectGetWidth(self.textField.frame)-5.f];
+    [self.textField setY:CGRectGetMaxY(self.fundCell.frame)+5.f];
+    [self.sendButton setX:CGRectGetMidX(self.view.frame)+5.f];
+    [self.sendButton setY:CGRectGetMaxY(self.fundCell.frame)+5.f];
+}
+
 - (void)_dismissSelf {
     [UIView animateWithDuration:0.25f animations:^{
         self.blurView.alpha = 0;
@@ -132,6 +162,9 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
         self.fundCell.sendMoneyButton.alpha = 1;
         [self _placeCloseButtonAboveView];
         self.dismissButton.alpha = 0;
+        [self _positionActionsBelowView];
+        self.textField.alpha = 0;
+        self.sendButton.alpha = 0;
     } completion:^(BOOL finished) {
         [self.navigationController popViewControllerAnimated:NO];
     }];
