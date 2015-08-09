@@ -45,7 +45,8 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
         self.textField.backgroundColor = [UIColor whiteColor];
         self.textField.keyboardType = UIKeyboardTypeNumberPad;
         self.textField.font = [UIFont systemFontOfSize:14.f];
-        self.textField.placeholder = @"          $$";
+        self.textField.textAlignment = NSTextAlignmentCenter;
+        self.textField.placeholder = @"$$";
         self.textField.layer.cornerRadius = 3.f;
         
         self.sendButton = [[UIButton alloc] init];
@@ -163,14 +164,16 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
 }
 
 - (void)_pressedDone {
-    [self.sendButton setTitle:@"Sending..." forState:UIControlStateNormal];
-    [self.textField resignFirstResponder];
-    
-    [WOOperations sendMoneyToFund:self.fund amount:[self.textField.text intValue]*100 success:^{
-        self.fund.currentFunding += [self.textField.text intValue]*100;
-        self.fund.funderCount += 1;
-        [self _dismissSelf];
-    } failure:nil];
+    if ([self.textField.text length]) {
+        [self.sendButton setTitle:@"Sending..." forState:UIControlStateNormal];
+        [self.textField resignFirstResponder];
+        
+        [WOOperations sendMoneyToFund:self.fund amount:[self.textField.text intValue]*100 success:^{
+            self.fund.currentFunding += [self.textField.text intValue]*100;
+            self.fund.funderCount += 1;
+            [self _dismissSelf];
+        } failure:nil];
+    }
 }
 
 - (void)_dismissSelf {

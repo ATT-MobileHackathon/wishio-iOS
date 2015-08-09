@@ -127,12 +127,16 @@ static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
 
 - (void)dealloc {
     [self.userProfileImageView cancelImageRequestOperation];
+    self.userProfileImageView.image = nil;
     [self.productImageView cancelImageRequestOperation];
+    self.productImageView.image = nil;
 }
 
 - (void)prepareForReuse {
     [self.userProfileImageView cancelImageRequestOperation];
+    self.userProfileImageView.image = nil;
     [self.productImageView cancelImageRequestOperation];
+    self.productImageView.image = nil;
 }
 
 - (void)layoutSubviews {
@@ -152,7 +156,7 @@ static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
     [self.usernameLabel fillWidthWithMargin:TEXT_MARGIN + CGRectGetWidth(self.contributersLabel.frame)];
     
     [self.productName setX:CGRectGetMinX(self.usernameLabel.frame)];
-    [self.productName setY:CGRectGetMaxY(self.usernameLabel.frame)];
+    [self.productName setY:CGRectGetMaxY(self.usernameLabel.frame) + TEXT_MARGIN/2];
     [self.productName fillWidthWithMargin:TEXT_MARGIN];
     CGFloat height = [self.productName sizeThatFits:CGSizeMake(CGRectGetWidth(self.productName.frame), CGFLOAT_MAX)].height;
     [self.productName setHeight:height];
