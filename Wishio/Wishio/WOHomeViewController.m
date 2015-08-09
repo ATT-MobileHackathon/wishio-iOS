@@ -8,6 +8,7 @@
 
 #import "WOHomeViewController.h"
 
+#import "FontAwesomeKit.h"
 #import "UIView+WOAdditions.h"
 #import "WOConstants.h"
 #import "WOFund.h"
@@ -30,6 +31,7 @@
     [super viewDidLoad];
     self.title = @"WishFish";
     self.view.backgroundColor = [UIColor whiteColor];
+    [self _setupBarButtonItems];
     [self _setupView];
     [self _requestFeed];
 }
@@ -86,6 +88,26 @@
 }
 
 #pragma mark - Private Methods
+
+- (void)_setupBarButtonItems {
+    FAKIcon *notificationIcon = [FAKIonIcons androidNotificationsNoneIconWithSize:BARBUTTON_ICON_SIZE];
+    [notificationIcon setAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    UIImage *notificationImage = [notificationIcon imageWithSize:CGSizeMake(BARBUTTON_ICON_SIZE, BARBUTTON_ICON_SIZE)];
+    UIBarButtonItem *notificationButton = [[UIBarButtonItem alloc] initWithImage:notificationImage
+                                                                           style:UIBarButtonItemStylePlain
+                                                                          target:nil
+                                                                          action:nil];
+    self.navigationItem.rightBarButtonItem = notificationButton;
+    
+    FAKIcon *menuIcon = [FAKIonIcons androidMenuIconWithSize:BARBUTTON_ICON_SIZE];
+    [menuIcon setAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    UIImage *menuImage = [menuIcon imageWithSize:CGSizeMake(BARBUTTON_ICON_SIZE, BARBUTTON_ICON_SIZE)];
+    UIBarButtonItem *menuButton = [[UIBarButtonItem alloc] initWithImage:menuImage
+                                                                           style:UIBarButtonItemStylePlain
+                                                                          target:nil
+                                                                          action:nil];
+    self.navigationItem.leftBarButtonItem = menuButton;
+}
 
 - (void)_setupView {
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
