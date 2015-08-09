@@ -22,10 +22,13 @@
 #pragma mark - Public Methods
 
 - (NSString *)currentFundingString {
-    NSMutableString *result = [[NSMutableString alloc] init];
-    [result setString:[NSString stringWithFormat:@"$%d", (int)self.currentFunding]];
-    [result insertString:@"." atIndex:[result length] - 2];
-    return result;
+    if (self.currentFunding >= 10) {
+        NSMutableString *result = [[NSMutableString alloc] init];
+        [result setString:[NSString stringWithFormat:@"$%d", (int)self.currentFunding]];
+        [result insertString:@"." atIndex:[result length] - 2];
+        return result;
+    }
+    return [NSString stringWithFormat:@"$%d", (int)self.currentFunding];
 }
 
 @end
