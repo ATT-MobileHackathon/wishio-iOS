@@ -29,7 +29,12 @@ static NSString * FEED_ENDPOINT = @"/funds/retrieve";
         for (NSDictionary *fundJSON in fundJSONs) {
             WOFund *fund = [[WOFund alloc] init];
             fund.funderCount = [fundJSON[@"total_funders"] intValue];
-            fund.currentFunding = [fundJSON[@"currently_funded"] intValue];
+            if (fundJSON[@"currently_funded"] != [NSNull null]) {
+                fund.currentFunding = [fundJSON[@"currently_funded"] intValue];
+            } else {
+                fund.currentFunding = 000;
+            }
+
             
             NSDictionary *productJSON = fundJSON[@"item"];
             WOProduct *product = [[WOProduct alloc] init];
