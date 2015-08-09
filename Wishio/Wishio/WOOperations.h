@@ -21,4 +21,9 @@
                 success:(void(^)())success
                 failure:(void (^)(NSString *message))failure;
 
++ (void)registration:(NSString *)name
+            username:(NSString *)pinterest
+             success:(void(^)())success
+             failure:(void (^)(NSString *message))failure;
+
 @end
