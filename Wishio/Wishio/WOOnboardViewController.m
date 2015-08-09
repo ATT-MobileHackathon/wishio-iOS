@@ -62,7 +62,13 @@
             [defaults synchronize];
             [NSThread sleepForTimeInterval:1.0];
             [self loadHome];
-        } failure:nil];
+        } failure:^(NSString *message) {
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setInteger:1 forKey:@"user_id"];
+            [defaults synchronize];
+            [NSThread sleepForTimeInterval:1.0];
+            [self loadHome];
+        }];
     });
 }
 
