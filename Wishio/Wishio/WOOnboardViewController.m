@@ -35,6 +35,7 @@
     self.textView.placeholder = @"@Pinterest Username";
     self.textView.textAlignment = NSTextAlignmentCenter;
     self.textView.backgroundColor = [UIColor lighterGrayColor];
+    self.textView.autocorrectionType = UITextAutocorrectionTypeNo;
     [[self.textView layer] setCornerRadius:2];
     [self.textView setFont:[UIFont systemFontOfSize:22]];
 
