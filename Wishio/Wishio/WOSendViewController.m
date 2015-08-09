@@ -161,6 +161,8 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
     [self.textField resignFirstResponder];
     
     [WOOperations sendMoneyToFund:self.fund amount:[self.textField.text intValue]*100 success:^{
+        self.fund.currentFunding += [self.textField.text intValue]*100;
+        self.fund.funderCount += 1;
         [self _dismissSelf];
     } failure:nil];
 }
