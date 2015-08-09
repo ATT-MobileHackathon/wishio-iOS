@@ -7,12 +7,16 @@
 //
 
 #import "WOOnboardViewController.h"
-#import "WOHomeViewController.h"
+
+#import "FontAwesomeKit.h"
 #import "MBProgressHUD.h"
+#import "UIColor+WOColors.h"
+#import "WOConstants.h"
+#import "WOHomeViewController.h"
 #import "WOOperations.h"
 
-@interface WOOnboardViewController () <UITextViewDelegate>
-@property (nonatomic, strong) UITextView *textView;
+@interface WOOnboardViewController ()
+@property (nonatomic, strong) UITextField *textView;
 //@property (nonatomic, strong) UILabel *label;
 @end
 
@@ -27,25 +31,31 @@
 //    self.label.textColor = [UIColor blackColor];
 //    [self.view addSubview:self.label];
     
-    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 200, 350, 40)];
-    self.textView.delegate = self;
-    self.textView.text = @"Pinterest Username";
+    self.textView = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 350, 40)];
+    self.textView.placeholder = @"@Pinterest Username";
     self.textView.textAlignment = NSTextAlignmentCenter;
-    [[self.textView layer] setBorderColor:[[UIColor grayColor] CGColor]];
-    [[self.textView layer] setBorderWidth:1];
+    self.textView.backgroundColor = [UIColor lighterGrayColor];
     [[self.textView layer] setCornerRadius:2];
     [self.textView setFont:[UIFont systemFontOfSize:22]];
 
     [self.view addSubview:self.textView];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(submit)];
+    FAKIcon *doneIcon = [FAKIonIcons androidDoneIconWithSize:BARBUTTON_ICON_SIZE];
+    [doneIcon setAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    UIImage *doneImage = [doneIcon imageWithSize:CGSizeMake(BARBUTTON_ICON_SIZE, BARBUTTON_ICON_SIZE)];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithImage:doneImage
+                                                                   style:UIBarButtonItemStylePlain
+                                                                  target:self
+                                                                  action:@selector(submit)];
+    self.navigationItem.rightBarButtonItem = doneButton;
 }
 
 - (void)submit
 {
+    [self.textView resignFirstResponder];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        [WOOperations registration:@"April Yu" username:@"aprilyu" success:^{
+        [WOOperations registration:@"John Don" username:self.textView.text success:^{
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setInteger:1 forKey:@"user_id"];
             [defaults synchronize];
@@ -63,24 +73,6 @@
         WOHomeViewController *rootViewController = [[WOHomeViewController alloc] init];
         [self.navigationController pushViewController:rootViewController animated:YES];
     });
-}
-
-- (void)textViewDidBeginEditing:(UITextView *)textView
-{
-    if ([textView.text isEqualToString:@"Pinterest Username"]) {
-        textView.text = @"";
-        textView.textColor = [UIColor blackColor]; //optional
-    }
-    [textView becomeFirstResponder];
-}
-
-- (void)textViewDidEndEditing:(UITextView *)textView
-{
-    if ([textView.text isEqualToString:@""]) {
-        textView.text = @"Pinterest Username";
-        textView.textColor = [UIColor lightGrayColor]; //optional
-    }
-    [textView resignFirstResponder];
 }
 
 @end
