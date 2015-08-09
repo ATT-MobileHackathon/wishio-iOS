@@ -56,7 +56,7 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        [WOOperations registration:@"John Don" username:self.textView.text success:^{
+        [WOOperations registration:[self.textView.text capitalizedString] username:self.textView.text success:^{
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setInteger:1 forKey:@"user_id"];
             [defaults synchronize];
