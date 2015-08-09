@@ -8,22 +8,33 @@
 
 #import "WOFundTableViewCell.h"
 
+#import "FontAwesomeKit.h"
+
 #import "UIColor+WOColors.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIView+WOAdditions.h"
 #import "WOConstants.h"
+#import "WOFund.h"
+#import "WOProduct.h"
+#import "WOUser.h"
 
 @interface WOFundTableViewCell ()
 @property UIImageView *userProfileImageView;
 @property UILabel *usernameLabel;
 @property UILabel *contributersLabel;
+
 @property UILabel *productName;
 @property UIImageView *productImageView;
+
 @property UIView *progressBar;
 @property UIView *currentProgressView;
+
 @property UILabel *currentRaisedLabel;
 @property UILabel *priceLabel;
+
 @property UIView *bottomDivider;
+
+@property CGFloat progress;
 @end
 
 static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
@@ -34,8 +45,10 @@ static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
     
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.backgroundColor = [UIColor whiteColor];
         
         self.userProfileImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, PROFILE_SIZE, PROFILE_SIZE)];
+        self.userProfileImageView.contentMode = UIViewContentModeScaleAspectFill;
         self.userProfileImageView.clipsToBounds = YES;
         self.userProfileImageView.layer.cornerRadius = PROFILE_SIZE / 2;
         self.userProfileImageView.backgroundColor = [UIColor lighterGrayColor];
@@ -62,6 +75,7 @@ static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
         [self.contentView addSubview:self.productName];
         
         self.productImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, PRODUCT_IMAGE_SIZE, PRODUCT_IMAGE_SIZE)];
+        self.productImageView.contentMode = UIViewContentModeScaleAspectFill;
         self.productImageView.clipsToBounds = YES;
         self.productImageView.layer.cornerRadius = 5.f;
         self.productImageView.backgroundColor = [UIColor lighterGrayColor];
@@ -90,6 +104,20 @@ static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
         self.priceLabel.numberOfLines = 1;
         [self.contentView addSubview:self.priceLabel];
         
+        self.sendMoneyButton = [[UIButton alloc] init];
+        [self.sendMoneyButton setSize:CGSizeMake(80.f, 30.f)];
+        FAKIcon *moneyIcon = [FAKIonIcons socialUsdIconWithSize:14.f];
+        [moneyIcon setAttributes:@{NSForegroundColorAttributeName:[UIColor lightGreenColor]}];
+        [self.sendMoneyButton setImage:[moneyIcon imageWithSize:CGSizeMake(14.f, 14.f)]
+                              forState:UIControlStateNormal];
+        [self.sendMoneyButton setTitle:@"Send" forState:UIControlStateNormal];
+        [self.sendMoneyButton setTitleColor:[UIColor lightGreenColor] forState:UIControlStateNormal];
+        self.sendMoneyButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.f];
+        self.sendMoneyButton.layer.cornerRadius = 3.f;
+        self.sendMoneyButton.layer.borderWidth = 1.f;
+        self.sendMoneyButton.layer.borderColor = [UIColor lightGreenColor].CGColor;
+        [self insertSubview:self.sendMoneyButton atIndex:0];
+
         self.bottomDivider = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, DIVIDER_HEIGHT())];
         self.bottomDivider.backgroundColor = [UIColor borderColor];
         [self.contentView addSubview:self.bottomDivider];
@@ -98,11 +126,13 @@ static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
 }
 
 - (void)dealloc {
-    
+    [self.userProfileImageView cancelImageRequestOperation];
+    [self.productImageView cancelImageRequestOperation];
 }
 
 - (void)prepareForReuse {
-    
+    [self.userProfileImageView cancelImageRequestOperation];
+    [self.productImageView cancelImageRequestOperation];
 }
 
 - (void)layoutSubviews {
@@ -114,16 +144,13 @@ static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
     [self.usernameLabel setY:CGRectGetMinY(self.userProfileImageView.frame)];
     [self.usernameLabel fillWidthWithMargin:TEXT_MARGIN];
     [self.usernameLabel setHeight:[self.usernameLabel sizeThatFits:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)].height];
-    self.usernameLabel.text = @"Test Username";
     
-    self.contributersLabel.text = @"3 contributors";
     [self.contributersLabel sizeToFit];
     [self.contributersLabel setHeight:CGRectGetHeight(self.usernameLabel.frame)];
     [self.contributersLabel setY:VERTICAL_MARGIN];
     [self.contributersLabel alignRightWithMargin:TEXT_MARGIN];
     [self.usernameLabel fillWidthWithMargin:TEXT_MARGIN + CGRectGetWidth(self.contributersLabel.frame)];
     
-    self.productName.text = @"Product name";
     [self.productName setX:CGRectGetMinX(self.usernameLabel.frame)];
     [self.productName setY:CGRectGetMaxY(self.usernameLabel.frame)];
     [self.productName fillWidthWithMargin:TEXT_MARGIN];
@@ -137,18 +164,19 @@ static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
     [self.progressBar setY:CGRectGetMinY(self.productImageView.frame)];
     [self.progressBar setHeight:CGRectGetHeight(self.productImageView.frame)];
     
-    [self.currentProgressView setHeight:CGRectGetHeight(self.progressBar.frame) * 0.75];
+    [self.currentProgressView setHeight:CGRectGetHeight(self.progressBar.frame) * self.progress];
     [self.currentProgressView alignBottomWithMargin:0];
     
-    self.currentRaisedLabel.text = @"$300";
     [self.currentRaisedLabel sizeToFit];
     [self.currentRaisedLabel setX:CGRectGetMaxX(self.progressBar.frame) + TEXT_MARGIN];
     [self.currentRaisedLabel setY:CGRectGetMidY(self.progressBar.frame) - CGRectGetHeight(self.currentRaisedLabel.frame)];
     
-    self.priceLabel.text = @"of $400";
     [self.priceLabel sizeToFit];
     [self.priceLabel setX:CGRectGetMinX(self.currentRaisedLabel.frame)];
     [self.priceLabel setY:CGRectGetMaxY(self.currentRaisedLabel.frame)];
+    
+    [self.sendMoneyButton alignRightWithMargin:TEXT_MARGIN];
+    [self.sendMoneyButton alignBottomWithMargin:TEXT_MARGIN];
     
     [self.bottomDivider setX:CGRectGetMinX(self.usernameLabel.frame)];
     [self.bottomDivider setY:CGRectGetMaxY(self.productImageView.frame) + VERTICAL_MARGIN];
@@ -159,12 +187,26 @@ static const CGFloat PRODUCT_IMAGE_SIZE = 100.f;
 
 #pragma mark - Public Methods
 
-- (void)setupWithFund:(id)fund
+- (void)setupWithFund:(WOFund *)fund
 {
+    [self.userProfileImageView setImageWithURL:fund.user.imageURL];
+    self.usernameLabel.text = fund.user.name;
+    self.contributersLabel.text = [NSString stringWithFormat:@"%d contributors", (int)fund.funderCount];
+    if (fund.funderCount == 1) {
+        self.contributersLabel.text = [self.contributersLabel.text substringToIndex:[self.contributersLabel.text length]-1];
+    }
+    self.productName.text = fund.product.name;
+    [self.productImageView setImageWithURL:fund.product.imageURL];
+    if (fund) {
+        self.progress = (CGFloat) fund.currentFunding / fund.product.price;
+    }
+    self.currentRaisedLabel.text = [fund currentFundingString];
+    self.priceLabel.text = [NSString stringWithFormat:@"of %@", [fund.product priceString]];
+    
     [self layoutSubviews];
 }
 
-+ (CGFloat)heightGivenFund:(id)fund widthConstraint:(CGFloat)width
++ (CGFloat)heightGivenFund:(WOFund *)fund widthConstraint:(CGFloat)width
 {
     static WOFundTableViewCell *cell;
     if (!cell) {

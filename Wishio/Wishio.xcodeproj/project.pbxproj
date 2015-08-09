@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		2746C9901B7651A60094762F /* WOFundTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2746C98F1B7651A60094762F /* WOFundTableViewCell.m */; };
 		2746C9931B7658BA0094762F /* UIView+WOAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2746C9921B7658BA0094762F /* UIView+WOAdditions.m */; };
+		2746C9981B768ED60094762F /* WOUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2746C9971B768ED60094762F /* WOUser.m */; };
+		2746C99B1B768EEA0094762F /* WOFund.m in Sources */ = {isa = PBXBuildFile; fileRef = 2746C99A1B768EEA0094762F /* WOFund.m */; };
+		2746C99E1B7690020094762F /* WOProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 2746C99D1B7690020094762F /* WOProduct.m */; };
+		2746C9A21B76941D0094762F /* WOOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 2746C9A11B76941D0094762F /* WOOperations.m */; };
+		2746C9A51B7699D00094762F /* WOSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2746C9A41B7699D00094762F /* WOSendViewController.m */; };
 		27807D941B76044E00E52F92 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27807D931B76044E00E52F92 /* main.m */; };
 		27807D971B76044E00E52F92 /* WOAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27807D961B76044E00E52F92 /* WOAppDelegate.m */; };
 		27807D9A1B76044E00E52F92 /* WOHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27807D991B76044E00E52F92 /* WOHomeViewController.m */; };
@@ -35,6 +40,16 @@
 		2746C9911B7658BA0094762F /* UIView+WOAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WOAdditions.h"; sourceTree = "<group>"; };
 		2746C9921B7658BA0094762F /* UIView+WOAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WOAdditions.m"; sourceTree = "<group>"; };
 		2746C9951B765AE60094762F /* WOConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WOConstants.h; sourceTree = "<group>"; };
+		2746C9961B768ED60094762F /* WOUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOUser.h; sourceTree = "<group>"; };
+		2746C9971B768ED60094762F /* WOUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOUser.m; sourceTree = "<group>"; };
+		2746C9991B768EEA0094762F /* WOFund.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOFund.h; sourceTree = "<group>"; };
+		2746C99A1B768EEA0094762F /* WOFund.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOFund.m; sourceTree = "<group>"; };
+		2746C99C1B7690020094762F /* WOProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOProduct.h; sourceTree = "<group>"; };
+		2746C99D1B7690020094762F /* WOProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOProduct.m; sourceTree = "<group>"; };
+		2746C9A01B76941D0094762F /* WOOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOOperations.h; sourceTree = "<group>"; };
+		2746C9A11B76941D0094762F /* WOOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOOperations.m; sourceTree = "<group>"; };
+		2746C9A31B7699D00094762F /* WOSendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOSendViewController.h; sourceTree = "<group>"; };
+		2746C9A41B7699D00094762F /* WOSendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOSendViewController.m; sourceTree = "<group>"; };
 		27807D8E1B76044E00E52F92 /* Wishio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wishio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27807D921B76044E00E52F92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27807D931B76044E00E52F92 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -77,6 +92,12 @@
 		2746C98A1B764FD40094762F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2746C9961B768ED60094762F /* WOUser.h */,
+				2746C9971B768ED60094762F /* WOUser.m */,
+				2746C9991B768EEA0094762F /* WOFund.h */,
+				2746C99A1B768EEA0094762F /* WOFund.m */,
+				2746C99C1B7690020094762F /* WOProduct.h */,
+				2746C99D1B7690020094762F /* WOProduct.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -97,6 +118,8 @@
 				27807D991B76044E00E52F92 /* WOHomeViewController.m */,
 				B6A6E5DE1B76DB1F0033A2CB /* WOOnboardViewController.h */,
 				B6A6E5DF1B76DB1F0033A2CB /* WOOnboardViewController.m */,
+				2746C9A31B7699D00094762F /* WOSendViewController.h */,
+				2746C9A41B7699D00094762F /* WOSendViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -118,6 +141,15 @@
 				2746C9951B765AE60094762F /* WOConstants.h */,
 			);
 			name = Constants;
+			sourceTree = "<group>";
+		};
+		2746C99F1B7693BC0094762F /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				2746C9A01B76941D0094762F /* WOOperations.h */,
+				2746C9A11B76941D0094762F /* WOOperations.m */,
+			);
+			name = Operations;
 			sourceTree = "<group>";
 		};
 		27807D851B76044D00E52F92 = {
@@ -143,11 +175,12 @@
 		27807D901B76044E00E52F92 /* Wishio */ = {
 			isa = PBXGroup;
 			children = (
-				2746C9941B765ACD0094762F /* Constants */,
-				2746C98D1B764FEC0094762F /* Categories */,
+				2746C99F1B7693BC0094762F /* Operations */,
 				2746C98C1B764FE50094762F /* Controllers */,
 				2746C98B1B764FDF0094762F /* Views */,
 				2746C98A1B764FD40094762F /* Models */,
+				2746C98D1B764FEC0094762F /* Categories */,
+				2746C9941B765ACD0094762F /* Constants */,
 				27807D951B76044E00E52F92 /* WOAppDelegate.h */,
 				27807D961B76044E00E52F92 /* WOAppDelegate.m */,
 				27807D9E1B76044E00E52F92 /* Images.xcassets */,
@@ -335,10 +368,15 @@
 				2746C9931B7658BA0094762F /* UIView+WOAdditions.m in Sources */,
 				B6A6E5E01B76DB1F0033A2CB /* WOOnboardViewController.m in Sources */,
 				27807D9A1B76044E00E52F92 /* WOHomeViewController.m in Sources */,
+				2746C99E1B7690020094762F /* WOProduct.m in Sources */,
 				27807DB91B76164600E52F92 /* UIColor+WOColors.m in Sources */,
 				27807D971B76044E00E52F92 /* WOAppDelegate.m in Sources */,
 				27807D941B76044E00E52F92 /* main.m in Sources */,
+				2746C9A51B7699D00094762F /* WOSendViewController.m in Sources */,
+				2746C9981B768ED60094762F /* WOUser.m in Sources */,
+				2746C99B1B768EEA0094762F /* WOFund.m in Sources */,
 				2746C9901B7651A60094762F /* WOFundTableViewCell.m in Sources */,
+				2746C9A21B76941D0094762F /* WOOperations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
