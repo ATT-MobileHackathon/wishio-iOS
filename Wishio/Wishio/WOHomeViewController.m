@@ -24,6 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.title = @"WishFish";
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -60,7 +62,6 @@
 
 - (void)_setupView {
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
-    [tableView setHeight:CGRectGetHeight(tableView.frame) - NAVBAR_HEIGHT];
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

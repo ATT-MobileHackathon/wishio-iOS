@@ -8,7 +8,7 @@
 
 #import "WOAppDelegate.h"
 
-#import "WOHomeViewController.h"
+#import "WOOnboardViewController.h"
 #import "UIColor+WOColors.h"
 
 @implementation WOAppDelegate
@@ -16,7 +16,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-    UIViewController *rootViewController = [[WOHomeViewController alloc] init];
+    UIViewController *rootViewController = [[WOOnboardViewController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];

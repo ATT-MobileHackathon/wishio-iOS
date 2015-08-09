@@ -1,11 +1,11 @@
 PODS:
   - AFNetworking (2.5.4):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-    - AFNetworking/UIKit
+    - AFNetworking/NSURLConnection (= 2.5.4)
+    - AFNetworking/NSURLSession (= 2.5.4)
+    - AFNetworking/Reachability (= 2.5.4)
+    - AFNetworking/Security (= 2.5.4)
+    - AFNetworking/Serialization (= 2.5.4)
+    - AFNetworking/UIKit (= 2.5.4)
   - AFNetworking/NSURLConnection (2.5.4):
     - AFNetworking/Reachability
     - AFNetworking/Security
@@ -21,11 +21,11 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - FontAwesomeKit (2.1.9):
-    - FontAwesomeKit/Core
-    - FontAwesomeKit/FontAwesome
-    - FontAwesomeKit/FoundationIcons
-    - FontAwesomeKit/IonIcons
-    - FontAwesomeKit/Zocial
+    - FontAwesomeKit/Core (= 2.1.9)
+    - FontAwesomeKit/FontAwesome (= 2.1.9)
+    - FontAwesomeKit/FoundationIcons (= 2.1.9)
+    - FontAwesomeKit/IonIcons (= 2.1.9)
+    - FontAwesomeKit/Zocial (= 2.1.9)
   - FontAwesomeKit/Core (2.1.9)
   - FontAwesomeKit/FontAwesome (2.1.9):
     - FontAwesomeKit/Core
@@ -37,7 +37,7 @@ PODS:
     - FontAwesomeKit/Core
   - FXBlurView (1.6.3)
   - Mantle (2.0.3):
-    - Mantle/extobjc
+    - Mantle/extobjc (= 2.0.3)
   - Mantle/extobjc (2.0.3)
   - UICKeyChainStore (2.0.6)
 
@@ -52,11 +52,16 @@ EXTERNAL SOURCES:
   FontAwesomeKit:
     :git: https://github.com/PrideChung/FontAwesomeKit.git
 
+CHECKOUT OPTIONS:
+  FontAwesomeKit:
+    :commit: 0c9d92aeef1fd148c11daed2ded9d0dcdb4b2c4f
+    :git: https://github.com/PrideChung/FontAwesomeKit.git
+
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
-  FontAwesomeKit: f8fb420a8ce4f234fc17d9a022c26de77a399924
+  FontAwesomeKit: 0cd610453ce270f34ad17378c68de98aad0e05ef
   FXBlurView: c6d23f3d35af2c6282296a2930f61c6e2c788d01
   Mantle: 8d6b14979a082a9ed4994463eb7a4ff576c94632
   UICKeyChainStore: c5719c814e8bd69e74e4a0fc09daf8f4d6257a59
 
-COCOAPODS: 0.34.4
+COCOAPODS: 0.38.2
