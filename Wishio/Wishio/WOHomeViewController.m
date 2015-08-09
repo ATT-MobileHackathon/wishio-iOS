@@ -31,6 +31,8 @@
     [super viewDidLoad];
     self.title = @"WishFish";
     self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.title = @"WishFish";
     [self _setupBarButtonItems];
     [self _setupView];
     [self _requestFeed];

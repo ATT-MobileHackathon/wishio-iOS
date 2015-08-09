@@ -20,6 +20,7 @@
 		27807D9F1B76044E00E52F92 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27807D9E1B76044E00E52F92 /* Images.xcassets */; };
 		27807DAE1B76044F00E52F92 /* WishioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27807DAD1B76044F00E52F92 /* WishioTests.m */; };
 		27807DB91B76164600E52F92 /* UIColor+WOColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 27807DB81B76164600E52F92 /* UIColor+WOColors.m */; };
+		B6A6E5E01B76DB1F0033A2CB /* WOOnboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A6E5DF1B76DB1F0033A2CB /* WOOnboardViewController.m */; };
 		E32EDF2717072B3DA5C194CD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D11E50BAF57C114F1FF91F20 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,8 @@
 		27807DB81B76164600E52F92 /* UIColor+WOColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+WOColors.m"; sourceTree = "<group>"; };
 		586772CCD49A0B6030AC0618 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		687C973E3FD31D3123D37663 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B6A6E5DE1B76DB1F0033A2CB /* WOOnboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOOnboardViewController.h; sourceTree = "<group>"; };
+		B6A6E5DF1B76DB1F0033A2CB /* WOOnboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOOnboardViewController.m; sourceTree = "<group>"; };
 		D11E50BAF57C114F1FF91F20 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -113,6 +116,8 @@
 			children = (
 				27807D981B76044E00E52F92 /* WOHomeViewController.h */,
 				27807D991B76044E00E52F92 /* WOHomeViewController.m */,
+				B6A6E5DE1B76DB1F0033A2CB /* WOOnboardViewController.h */,
+				B6A6E5DF1B76DB1F0033A2CB /* WOOnboardViewController.m */,
 				2746C9A31B7699D00094762F /* WOSendViewController.h */,
 				2746C9A41B7699D00094762F /* WOSendViewController.m */,
 			);
@@ -361,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2746C9931B7658BA0094762F /* UIView+WOAdditions.m in Sources */,
+				B6A6E5E01B76DB1F0033A2CB /* WOOnboardViewController.m in Sources */,
 				27807D9A1B76044E00E52F92 /* WOHomeViewController.m in Sources */,
 				2746C99E1B7690020094762F /* WOProduct.m in Sources */,
 				27807DB91B76164600E52F92 /* UIColor+WOColors.m in Sources */,

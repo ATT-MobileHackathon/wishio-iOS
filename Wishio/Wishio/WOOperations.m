@@ -16,6 +16,7 @@
 static const NSString * BASE_URL = @"https://214b7bb7.ngrok.com";
 static NSString * FEED_ENDPOINT = @"/funds/retrieve";
 static NSString * FUND_ENDPOINT = @"/funds/contribute";
+static NSString * REGISTER_ENDPOINT = @"/register";
 
 @implementation WOOperations
 
@@ -80,6 +81,26 @@ static NSString * FUND_ENDPOINT = @"/funds/contribute";
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (failure) {
             failure(@"Could not donate");
+        }
+    }];
+}
+
++ (void)registration:(NSString *)name
+            username:(NSString *)pinterest
+             success:(void(^)())success
+             failure:(void (^)(NSString *message))failure
+{
+    NSString *URL = [BASE_URL stringByAppendingString:REGISTER_ENDPOINT];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    parameters[@"name"] = name;
+    parameters[@"pinterest"] = pinterest;
+    [[AFHTTPRequestOperationManager manager] POST:URL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (success) {
+            success();
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure(@"Could not register");
         }
     }];
 }

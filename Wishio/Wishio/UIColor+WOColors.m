@@ -19,7 +19,7 @@
 }
 
 + (UIColor *)primaryTextColor {
-    return [UIColor colorWithWhite:0.20 alpha:1];
+    return [UIColor colorWithWhite:0.30 alpha:1];
 }
 
 + (UIColor *)secondaryTextColor {
