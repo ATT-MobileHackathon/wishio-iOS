@@ -77,6 +77,7 @@
     WOSendViewController *controller = [[WOSendViewController alloc] init];
     controller.initialY = CGRectGetMinY(cellCopy.frame);
     controller.fundCell = cellCopy;
+    controller.fund = fund;
     [controller getScreenshot];
     
     [self.navigationController pushViewController:controller animated:NO];

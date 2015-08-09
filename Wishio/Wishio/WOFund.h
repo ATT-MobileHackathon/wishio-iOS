@@ -9,8 +9,10 @@
 #import "Mantle.h"
 @class WOProduct;
 @class WOUser;
+
 @interface WOFund : MTLModel <MTLJSONSerializing>
 
+@property (assign, nonatomic) NSInteger fundId;
 @property (assign, nonatomic) NSInteger currentFunding;
 @property (assign, nonatomic) NSInteger funderCount;
 @property (strong, nonatomic) WOProduct *product;

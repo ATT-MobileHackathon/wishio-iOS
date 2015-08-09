@@ -15,6 +15,7 @@
 
 static const NSString * BASE_URL = @"https://214b7bb7.ngrok.com";
 static NSString * FEED_ENDPOINT = @"/funds/retrieve";
+static NSString * FUND_ENDPOINT = @"/funds/contribute";
 
 @implementation WOOperations
 
@@ -28,6 +29,7 @@ static NSString * FEED_ENDPOINT = @"/funds/retrieve";
         NSArray *fundJSONs = responseObject[@"funds"];
         for (NSDictionary *fundJSON in fundJSONs) {
             WOFund *fund = [[WOFund alloc] init];
+            fund.fundId = [fundJSON[@"fund_id"] intValue];
             fund.funderCount = [fundJSON[@"total_funders"] intValue];
             if (fundJSON[@"currently_funded"] != [NSNull null]) {
                 fund.currentFunding = [fundJSON[@"currently_funded"] intValue];
@@ -35,7 +37,6 @@ static NSString * FEED_ENDPOINT = @"/funds/retrieve";
                 fund.currentFunding = 000;
             }
 
-            
             NSDictionary *productJSON = fundJSON[@"item"];
             WOProduct *product = [[WOProduct alloc] init];
             product.name = productJSON[@"name"];
@@ -58,6 +59,27 @@ static NSString * FEED_ENDPOINT = @"/funds/retrieve";
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (failure) {
             failure(@"Could not retrieve feed");
+        }
+    }];
+}
+
++ (void)sendMoneyToFund:(WOFund *)fund
+                 amount:(NSInteger)amount
+                success:(void(^)())success
+                failure:(void (^)(NSString *message))failure
+{
+    NSString *URL = [BASE_URL stringByAppendingString:FUND_ENDPOINT];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    parameters[@"fund_id"] = @(fund.fundId);
+    parameters[@"user_id"] = @1;
+    parameters[@"contribution"] = @(amount);
+    [[AFHTTPRequestOperationManager manager] GET:URL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (success) {
+            success();
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure(@"Could not donate");
         }
     }];
 }

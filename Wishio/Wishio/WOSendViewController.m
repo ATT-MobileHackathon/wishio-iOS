@@ -14,6 +14,7 @@
 #import "UIView+WOAdditions.h"
 #import "WOConstants.h"
 #import "WOFundTableViewCell.h"
+#import "WOOperations.h"
 
 @interface WOSendViewController ()
 @property (strong, nonatomic) UIButton *dismissButton;
@@ -42,12 +43,14 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
         
         self.textField = [[UITextField alloc] init];
         self.textField.backgroundColor = [UIColor whiteColor];
+        self.textField.keyboardType = UIKeyboardTypeNumberPad;
         self.textField.layer.cornerRadius = 3.f;
         
         self.sendButton = [[UIButton alloc] init];
         self.sendButton.backgroundColor = [UIColor lightGreenColor];
         self.sendButton.layer.cornerRadius = 3.f;
         [self.sendButton setTitle:@"Send" forState:UIControlStateNormal];
+        [self.sendButton addTarget:self action:@selector(_pressedDone) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
 }
@@ -151,6 +154,15 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
     [self.textField setY:CGRectGetMaxY(self.fundCell.frame)+5.f];
     [self.sendButton setX:CGRectGetMidX(self.view.frame)+5.f];
     [self.sendButton setY:CGRectGetMaxY(self.fundCell.frame)+5.f];
+}
+
+- (void)_pressedDone {
+    [self.sendButton setTitle:@"Sending..." forState:UIControlStateNormal];
+    [self.textField resignFirstResponder];
+    
+    [WOOperations sendMoneyToFund:self.fund amount:[self.textField.text intValue]*100 success:^{
+        [self _dismissSelf];
+    } failure:nil];
 }
 
 - (void)_dismissSelf {

@@ -12,6 +12,7 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
+             @"fundId" : @"fund_id",
              @"currentFunding" : @"currently_funded",
              @"funderCount" : @"total_funders",
              @"product" : @"item"

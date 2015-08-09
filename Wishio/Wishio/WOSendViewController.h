@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 @class WOFundTableViewCell;
+@class WOFund;
 
 @interface WOSendViewController : UIViewController
 @property (assign, nonatomic) CGFloat initialY;
 @property (strong, nonatomic) WOFundTableViewCell *fundCell;
+@property (strong, nonatomic) WOFund *fund;
 - (void)getScreenshot;
 @end
