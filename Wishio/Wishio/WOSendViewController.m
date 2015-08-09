@@ -138,11 +138,13 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
     [blockingView setHeight:CGRectGetHeight(blockingView.frame)];
     [screenshot addSubview:blockingView];
     
-    UIView *navbar = [[UIView alloc] init];
-    [navbar setWidth:CGRectGetWidth(screenshot.frame)];
-    [navbar setHeight:NAVBAR_HEIGHT];
-    navbar.backgroundColor = [UIColor mainColor];
-    [screenshot addSubview:navbar];
+    if (self.initialY < NAVBAR_HEIGHT) {
+        UIView *navbar = [[UIView alloc] init];
+        [navbar setWidth:CGRectGetWidth(screenshot.frame)];
+        [navbar setHeight:NAVBAR_HEIGHT];
+        navbar.backgroundColor = [UIColor mainColor];
+        [screenshot addSubview:navbar];
+    }
 }
 
 - (void)_placeCloseButtonAboveView {

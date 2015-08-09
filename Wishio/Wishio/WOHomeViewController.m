@@ -28,6 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"WishFish";
     self.view.backgroundColor = [UIColor whiteColor];
     [self _setupView];
     [self _requestFeed];
