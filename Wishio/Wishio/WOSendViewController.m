@@ -45,7 +45,8 @@ static const CGFloat DAMPING_FACTOR = 0.70f;
         self.textField.backgroundColor = [UIColor whiteColor];
         self.textField.keyboardType = UIKeyboardTypeNumberPad;
         self.textField.font = [UIFont systemFontOfSize:14.f];
-        self.textField.placeholder = @"          $$";
+        self.textField.textAlignment = NSTextAlignmentCenter;
+        self.textField.placeholder = @"$$";
         self.textField.layer.cornerRadius = 3.f;
         
         self.sendButton = [[UIButton alloc] init];
