@@ -39,6 +39,7 @@ PODS:
   - Mantle (2.0.3):
     - Mantle/extobjc (= 2.0.3)
   - Mantle/extobjc (2.0.3)
+  - MBProgressHUD (0.9.1)
   - UICKeyChainStore (2.0.6)
 
 DEPENDENCIES:
@@ -46,6 +47,7 @@ DEPENDENCIES:
   - FontAwesomeKit (from `https://github.com/PrideChung/FontAwesomeKit.git`)
   - FXBlurView
   - Mantle
+  - MBProgressHUD (~> 0.9.1)
   - UICKeyChainStore
 
 EXTERNAL SOURCES:
@@ -62,6 +64,7 @@ SPEC CHECKSUMS:
   FontAwesomeKit: 0cd610453ce270f34ad17378c68de98aad0e05ef
   FXBlurView: c6d23f3d35af2c6282296a2930f61c6e2c788d01
   Mantle: 8d6b14979a082a9ed4994463eb7a4ff576c94632
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   UICKeyChainStore: c5719c814e8bd69e74e4a0fc09daf8f4d6257a59
 
 COCOAPODS: 0.38.2

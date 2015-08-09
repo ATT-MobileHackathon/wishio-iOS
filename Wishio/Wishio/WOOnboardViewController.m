@@ -8,6 +8,7 @@
 
 #import "WOOnboardViewController.h"
 #import "WOHomeViewController.h"
+#import "MBProgressHUD.h"
 
 @interface WOOnboardViewController () <UITextViewDelegate>
 @property (nonatomic, strong) UITextView *textView;
@@ -39,11 +40,21 @@
 }
 
 - (void) submit {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:1 forKey:@"user_id"];
-    [defaults synchronize];
-    WOHomeViewController *rootViewController = [[WOHomeViewController alloc] init];
-    [self.navigationController pushViewController:rootViewController animated:YES];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setInteger:1 forKey:@"user_id"];
+        [defaults synchronize];
+        [NSThread sleepForTimeInterval:1.0];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            WOHomeViewController *rootViewController = [[WOHomeViewController alloc] init];
+            [self.navigationController pushViewController:rootViewController animated:YES];
+        });
+    });
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
